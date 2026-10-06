@@ -18,7 +18,7 @@ items.forEach(el => observer.observe(el));
  * A fixed dash travels continuously along it, so a new stroke starts drawing
  * back on before the previous one has completely left the far edge.
  */
-const WAVE_PATH = 'M-100 90 C-50 52 0 52 50 90 S150 128 200 90 S300 52 350 90 S450 128 500 90 S600 52 650 90 S750 128 800 90 S900 52 950 90 S1050 128 1100 90 S1200 52 1250 90 S1350 128 1400 90 S1500 52 1550 90 S1650 128 1700 90';
+const WAVE_PATH = 'M-120 90 C-80 54 -40 54 0 90 C40 126 80 126 120 90 C160 54 200 54 240 90 C280 126 320 126 360 90 C400 54 440 54 480 90 C520 126 560 126 600 90 C640 54 680 54 720 90 C760 126 800 126 840 90 C880 54 920 54 960 90 C1000 126 1040 126 1080 90 C1120 54 1160 54 1200 90 C1240 126 1280 126 1320 90 C1360 54 1400 54 1440 90 C1480 126 1520 126 1560 90 C1600 54 1640 54 1680 90';
 
 function createWave({ tone = 'dark', hero = false, delay = 0 } = {}) {
   const ns = 'http://www.w3.org/2000/svg';
@@ -70,16 +70,8 @@ const wavePlacements = [
   ['.site-nav', 'dark', false],
   ['.hero--image', 'dark', true],
   ['.manifesto', 'light', false],
-  ['.work-head', 'dark', false],
-  ['.project-info', 'dark', false],
-  ['.craft', 'light', false],
   ['.method', 'dark', false],
-  ['.contact', 'dark', false],
-  ['.case-hero', 'dark', false],
-  ['.storyboard-section', 'light', false],
-  ['.fox-deck-section', 'dark', false],
-  ['.case-section', 'dark', false],
-  ['.next-project', 'dark', false]
+  ['.case-hero', 'dark', false]
 ];
 
 let waveIndex = 0;
