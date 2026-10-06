@@ -329,3 +329,11 @@ footer>div:last-child{text-align:right}
     object-position:50% 47%;
   }
 }
+
+
+/* 2026-10-06 featured image crop: bias composition left */
+@media (min-width:901px){
+  .hero-project img{
+    object-position:36% 47%;
+  }
+}
