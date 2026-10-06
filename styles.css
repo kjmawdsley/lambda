@@ -736,3 +736,189 @@ footer>div:last-child{text-align:right}
     opacity:.8;
   }
 }
+
+
+/* Wavelength system v4 — one clean waveform, one continuous trim-path motion */
+.hero-copy-panel::before,
+.hero-copy-panel::after,
+.manifesto::before,
+.manifesto::after,
+.craft::after,
+.method::before,
+.method::after,
+.contact::after,
+.work-head::after,
+.project-info::after,
+.site-nav::after,
+.project-media::after,
+.hero-project::before{
+  content:none !important;
+  background:none !important;
+  animation:none !important;
+}
+
+.hero-wave{
+  display:none !important;
+}
+
+.site-nav,
+.hero--image,
+.manifesto,
+.work-head,
+.project-info,
+.craft,
+.method,
+.contact{
+  position:relative;
+  overflow:hidden;
+}
+
+.lambda-wave{
+  position:absolute;
+  display:block;
+  width:100%;
+  pointer-events:none;
+  overflow:visible;
+  z-index:0;
+}
+
+.lambda-wave__track,
+.lambda-wave__runner{
+  fill:none;
+  vector-effect:non-scaling-stroke;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.lambda-wave__track{
+  stroke-width:1.2;
+  opacity:.10;
+}
+
+.lambda-wave__runner{
+  stroke-width:2.6;
+  opacity:.82;
+  stroke-dasharray:34 66;
+  stroke-dashoffset:0;
+  animation:lambdaTrimFlow 7.2s linear infinite;
+  animation-delay:var(--wave-delay,0s);
+}
+
+@keyframes lambdaTrimFlow{
+  from{stroke-dashoffset:0}
+  to{stroke-dashoffset:100}
+}
+
+/* Put content above the wavelength while allowing the stroke to cross imagery. */
+.hero-copy-panel > *,
+.hero-project-label,
+.manifesto > :not(.lambda-wave),
+.craft > :not(.lambda-wave),
+.method > :not(.lambda-wave),
+.contact > :not(.lambda-wave),
+.work-head > :not(.lambda-wave),
+.project-info > :not(.lambda-wave){
+  position:relative;
+  z-index:2;
+}
+
+.lambda-wave--hero{
+  z-index:2;
+  left:0;
+  top:51%;
+  height:150px;
+  transform:translateY(-50%);
+}
+
+.hero-copy-panel,
+.hero-project{
+  z-index:1;
+}
+
+.lambda-wave--hero .lambda-wave__track{
+  opacity:.14;
+}
+
+.lambda-wave--hero .lambda-wave__runner{
+  stroke-width:3;
+  opacity:.95;
+}
+
+.manifesto > .lambda-wave{
+  left:0;
+  bottom:9%;
+  height:120px;
+  opacity:.95;
+}
+
+.work-head > .lambda-wave{
+  left:34%;
+  width:66%;
+  bottom:-14px;
+  height:38px;
+  opacity:.7;
+}
+
+.project-info > .lambda-wave{
+  left:0;
+  width:34%;
+  bottom:18px;
+  height:42px;
+  opacity:.52;
+}
+
+.craft > .lambda-wave{
+  left:0;
+  top:14%;
+  height:118px;
+  opacity:.72;
+}
+
+.method > .lambda-wave{
+  left:0;
+  bottom:8%;
+  height:120px;
+  opacity:.72;
+}
+
+.contact > .lambda-wave{
+  left:46%;
+  width:58%;
+  top:18%;
+  height:110px;
+  opacity:.52;
+}
+
+.site-nav > .lambda-wave{
+  left:0;
+  bottom:-3px;
+  height:11px;
+  opacity:.42;
+  z-index:0;
+}
+
+.site-nav > :not(.lambda-wave){
+  position:relative;
+  z-index:2;
+}
+
+@media(max-width:900px){
+  .lambda-wave--hero{
+    top:auto;
+    bottom:34%;
+    height:92px;
+    transform:none;
+  }
+  .work-head > .lambda-wave{left:0;width:100%}
+  .project-info > .lambda-wave{display:none}
+  .contact > .lambda-wave{left:18%;width:88%}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .lambda-wave__runner{
+    animation:none;
+    stroke-dasharray:none;
+    stroke-dashoffset:0;
+    opacity:.5;
+  }
+}
