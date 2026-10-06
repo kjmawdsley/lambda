@@ -1,17 +1,7 @@
-@font-face{
-  font-family:"Mazius";
-  src:url("https://storage.googleapis.com/geyser-projects-media/fonts/MaziusDisplay-Regular.woff2") format("woff2");
-  font-style:normal;font-weight:400;font-display:swap
-}
-@font-face{
-  font-family:"Mazius";
-  src:url("https://storage.googleapis.com/geyser-projects-media/fonts/MaziusDisplay-Extraitalic.woff2") format("woff2");
-  font-style:italic;font-weight:400;font-display:swap
-}
 :root{
   --paper:#f4f6ef;--ink:#11110f;--muted:#6a6b64;--line:rgba(17,17,15,.2);
   --blue:#173bd8;--orange:#ff5a1f;--pink:#ef9abb;--acid:#b7b852;--clay:#74251f;
-  --serif:"Mazius",Georgia,serif;--sans:"Bricolage Grotesque",Arial,sans-serif
+  --serif:"Boska",Georgia,serif;--sans:"Bricolage Grotesque",Arial,sans-serif
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -118,4 +108,70 @@ footer>div:last-child{text-align:right}
   .project-visual{min-height:560px}
   .storyboard-strip{grid-template-columns:1fr 1fr}
   .visual-stage{min-height:300px}
+}
+
+/* 2026-10-06 visual refresh */
+.brand-word{font-weight:700;letter-spacing:.16em}
+.hero--image{
+  min-height:calc(100vh - 68px);
+  padding:0;
+  display:grid;
+  grid-template-columns:minmax(420px,.78fr) minmax(0,1.22fr);
+  grid-template-rows:1fr 16px;
+  background:var(--paper);
+}
+.hero-copy-panel{
+  padding:clamp(32px,4vw,72px) 3vw 30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:calc(100vh - 84px);
+  background:var(--blue);
+  color:#fff;
+}
+.hero-copy{padding:6vh 0}
+.hero--image h1{
+  font-family:var(--serif);
+  font-size:clamp(72px,9.2vw,154px);
+  line-height:.86;
+  letter-spacing:-.018em;
+  margin:0 0 32px;
+  font-weight:400;
+}
+.hero--image h1 span,.hero--image h1 em{display:block}
+.hero--image h1 em{font-style:italic;font-weight:300;margin-left:0;letter-spacing:-.01em}
+.hero--image .hero-copy p{font-size:clamp(18px,1.55vw,25px);line-height:1.22;max-width:600px;margin:0;color:rgba(255,255,255,.92)}
+.hero--image .hero-foot{padding:0;display:flex;justify-content:space-between;align-items:flex-end}
+.hero--image .hero-services span{border-color:rgba(255,255,255,.5);background:transparent}
+.hero--image .text-link{color:#fff}
+.hero-project{position:relative;overflow:hidden;min-height:calc(100vh - 84px);display:block;background:#171717}
+.hero-project img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.hero-project:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,8,8,.62) 100%)}
+.hero-project:hover img{transform:scale(1.025)}
+.hero-project-label{position:absolute;z-index:1;left:28px;right:28px;bottom:26px;color:#fff;display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:22px}
+.hero-project-label span{font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.hero-project-label strong{font-family:var(--serif);font-size:clamp(40px,4vw,70px);font-weight:400;line-height:.9}
+.hero--image .spectrum{grid-column:1/-1;grid-row:2;height:16px;margin:0}
+
+.project-visual{position:relative}
+.project-open{position:absolute;right:24px;bottom:22px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid currentColor;padding-bottom:3px}
+.project-info h3,.manifesto h2,.craft h2,.method h2,.contact h2{
+  letter-spacing:-.008em;
+  font-kerning:normal;
+}
+.project-info h3{line-height:.99}
+.manifesto h2,.craft h2,.method h2,.contact h2{line-height:.93}
+
+@media(max-width:900px){
+  .hero--image{grid-template-columns:1fr;grid-template-rows:auto minmax(420px,58vh) 14px}
+  .hero-copy-panel{min-height:auto;padding:34px 18px 28px}
+  .hero-copy{padding:72px 0 52px}
+  .hero--image h1{font-size:clamp(66px,18vw,112px)}
+  .hero--image .hero-foot{display:block}
+  .hero--image .hero-services{margin-bottom:26px}
+  .hero-project{min-height:0;grid-row:2}
+  .hero-project-label{left:18px;right:18px;bottom:18px;grid-template-columns:1fr auto}
+  .hero-project-label span:first-child{display:none}
+  .hero-project-label strong{font-size:42px}
+  .hero--image .spectrum{grid-row:3}
 }
