@@ -295,3 +295,37 @@ footer>div:last-child{text-align:right}
   color:var(--ink);
   background:rgba(244,246,239,.18);
 }
+
+
+/* 2026-10-06 hero rebalance: bigger again, without returning to full-screen */
+@media (min-width:901px){
+  .hero--image{
+    grid-template-columns:35% 65%;
+    grid-template-rows:minmax(600px,68vh) 14px;
+  }
+  .hero-copy-panel{
+    height:100%;
+    min-height:0;
+    padding:38px 3vw 30px;
+  }
+  .hero-copy{
+    padding:6vh 0 3vh;
+  }
+  .hero--image h1{
+    font-size:clamp(64px,6.4vw,108px);
+    line-height:.87;
+  }
+  .hero--image .hero-copy p{
+    font-size:clamp(17px,1.25vw,21px);
+    max-width:500px;
+  }
+  .hero-project{
+    height:100%;
+    min-height:0;
+    aspect-ratio:auto;
+  }
+  .hero-project img{
+    object-fit:cover;
+    object-position:50% 47%;
+  }
+}
