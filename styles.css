@@ -279,3 +279,19 @@ footer>div:last-child{text-align:right}
     font-size:clamp(34px,3vw,54px);
   }
 }
+
+
+/* 2026-10-06 hero colour correction: separate hero from cobalt manifesto */
+.hero--image .hero-copy-panel{
+  background:#ef9abb;
+  color:var(--ink);
+}
+.hero--image .hero-copy p,
+.hero--image .text-link{
+  color:var(--ink);
+}
+.hero--image .hero-services span{
+  border-color:rgba(17,17,15,.55);
+  color:var(--ink);
+  background:rgba(244,246,239,.18);
+}
