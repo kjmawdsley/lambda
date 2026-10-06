@@ -74,3 +74,7 @@
   .storyboard-head{grid-template-columns:1fr;gap:24px;margin-bottom:36px}
   .storyboard-gallery{grid-template-columns:1fr}
 }
+
+.storyboard-overview{margin:0 0 18px;position:relative;background:#f1f1ed;overflow:hidden}
+.storyboard-overview img{display:block;width:100%;height:auto}
+.storyboard-overview figcaption{position:absolute;left:14px;bottom:12px;background:rgba(17,17,17,.9);color:#fff;padding:7px 9px;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
