@@ -91,3 +91,26 @@ footer>div:last-child{text-align:right}
   .capabilities{grid-template-columns:1fr 1fr}.capabilities div:nth-child(2){border-right:0}.capabilities div:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.35)}
   footer{grid-template-columns:1fr;gap:10px;padding:22px 18px}footer>div:last-child{text-align:left}
 }
+
+.project-visual{min-height:42vw;padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.project-visual--rws{background:var(--blue);color:#fff}
+.project-visual--fox{background:var(--orange);color:var(--ink)}
+.visual-meta,.visual-process{display:flex;justify-content:space-between;gap:16px;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.visual-process{justify-content:flex-start;flex-wrap:wrap}
+.visual-process span{border:1px solid currentColor;padding:7px 9px}
+.visual-stage{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-height:28vw}
+.visual-stage strong{font-family:var(--serif);font-size:clamp(70px,11vw,180px);line-height:.72;font-weight:400;letter-spacing:-.06em}
+.visual-stage em{font-family:var(--serif);font-size:clamp(42px,6vw,100px);line-height:.8;font-style:italic;margin-left:13vw}
+.stage-small{font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:2vw}
+.storyboard-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:3vw}
+.storyboard-strip div{aspect-ratio:4/3;border:1px solid currentColor;padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+.storyboard-strip b{font-family:var(--serif);font-size:clamp(32px,4vw,70px);font-weight:400}
+.storyboard-strip span{font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.visual-stage--fox{min-height:20vw}
+.visual-stage--fox strong{font-size:clamp(62px,10vw,160px)}
+.visual-stage--fox em{font-size:clamp(38px,5vw,82px);margin-left:10vw}
+@media(max-width:800px){
+  .project-visual{min-height:560px}
+  .storyboard-strip{grid-template-columns:1fr 1fr}
+  .visual-stage{min-height:300px}
+}
