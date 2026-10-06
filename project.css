@@ -45,3 +45,15 @@
   .next-project{padding:72px 18px}
   .next-project a{display:block}.next-project strong{display:block;margin-top:18px}
 }
+
+.case-gallery figure{margin:0;position:relative;background:#d7d7d2;overflow:hidden}
+.case-gallery figure img{width:100%;height:100%;min-height:34vw;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.case-gallery figure.wide img{min-height:48vw}
+.case-gallery figure:hover img{transform:scale(1.015)}
+.case-gallery figcaption{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;gap:16px;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.1em;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.case-gallery figcaption span{opacity:.7}
+.case-gallery figure:after{content:"";position:absolute;inset:auto 0 0;height:28%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.38));pointer-events:none}
+.case-gallery figcaption{z-index:1}
+@media(max-width:800px){
+  .case-gallery figure img,.case-gallery figure.wide img{min-height:58vw}
+}
