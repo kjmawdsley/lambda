@@ -337,3 +337,127 @@ footer>div:last-child{text-align:right}
     object-position:36% 47%;
   }
 }
+
+
+/* Lambda wavelength motif — deliberately low contrast and mostly structural */
+.hero-copy-panel,
+.manifesto,
+.craft,
+.method,
+.contact{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-copy-panel > *,
+.manifesto > *,
+.craft > *,
+.method > *,
+.contact > *{
+  position:relative;
+  z-index:1;
+}
+
+.hero-copy-panel::after{
+  content:"";
+  position:absolute;
+  left:-7%;
+  right:-7%;
+  bottom:58px;
+  height:92px;
+  background:url("assets/ui/wave-dark.svg") center / 100% 100% no-repeat;
+  opacity:.15;
+  pointer-events:none;
+  transform:rotate(-1.2deg);
+}
+
+.manifesto::after{
+  content:"";
+  position:absolute;
+  left:-3%;
+  right:-3%;
+  bottom:7%;
+  height:110px;
+  background:url("assets/ui/wave-light.svg") center / 100% 100% no-repeat;
+  opacity:.16;
+  pointer-events:none;
+}
+
+.craft::after{
+  content:"";
+  position:absolute;
+  left:-8%;
+  right:-8%;
+  top:13%;
+  height:96px;
+  background:url("assets/ui/wave-light.svg") center / 100% 100% no-repeat;
+  opacity:.10;
+  pointer-events:none;
+  transform:rotate(.7deg);
+}
+
+.method::after{
+  content:"";
+  position:absolute;
+  left:-4%;
+  right:-4%;
+  bottom:10%;
+  height:104px;
+  background:url("assets/ui/wave-dark.svg") center / 100% 100% no-repeat;
+  opacity:.14;
+  pointer-events:none;
+}
+
+.contact::after{
+  content:"";
+  position:absolute;
+  left:48%;
+  right:-6%;
+  top:18%;
+  height:90px;
+  background:url("assets/ui/wave-dark.svg") center / 100% 100% no-repeat;
+  opacity:.08;
+  pointer-events:none;
+}
+
+.text-link,
+.contact-link{
+  position:relative;
+}
+
+.text-link::after,
+.contact-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-9px;
+  height:10px;
+  background:url("assets/ui/wave-dark.svg") left center / 180px 15px repeat-x;
+  opacity:0;
+  transform:translateY(4px);
+  transition:opacity .25s ease, transform .25s ease;
+  pointer-events:none;
+}
+
+.text-link:hover::after,
+.contact-link:hover::after{
+  opacity:.42;
+  transform:translateY(0);
+}
+
+.hero-copy-panel .text-link::after{
+  opacity:0;
+}
+
+.hero-copy-panel .text-link:hover::after{
+  opacity:.35;
+}
+
+@media(max-width:800px){
+  .hero-copy-panel::after{bottom:42px;height:66px;opacity:.11}
+  .manifesto::after{bottom:5%;height:74px}
+  .craft::after{top:10%;height:68px}
+  .method::after{bottom:6%;height:72px}
+  .contact::after{left:28%;top:12%;height:64px}
+}
