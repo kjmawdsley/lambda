@@ -67,10 +67,11 @@ function createWave({ tone = 'dark', hero = false, delay = 0 } = {}) {
 }
 
 const wavePlacements = [
-  ['.site-nav', 'dark', false],
   ['.hero--image', 'dark', true],
   ['.manifesto', 'light', false],
+  ['.craft', 'light', false],
   ['.method', 'dark', false],
+  ['.contact', 'dark', false],
   ['.case-hero', 'dark', false]
 ];
 
