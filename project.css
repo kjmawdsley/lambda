@@ -93,3 +93,6 @@
   .fox-slide-gallery{grid-template-columns:1fr}
   .fox-slide-gallery figure.wide{grid-column:auto}
 }
+
+/* Fox treatment section uses the light page background, so override the shared dark storyboard text. */
+.fox-deck-section .storyboard-head p{color:var(--ink)}
