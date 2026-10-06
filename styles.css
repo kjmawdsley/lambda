@@ -212,3 +212,70 @@ footer>div:last-child{text-align:right}
     bottom:20px;
   }
 }
+
+
+/* 2026-10-06 hero correction: compact editorial split, no clipping */
+@media (min-width:901px){
+  .hero--image{
+    min-height:0;
+    max-height:none;
+    padding:0;
+    display:grid;
+    grid-template-columns:38% 62%;
+    grid-template-rows:auto 14px;
+    background:var(--paper);
+  }
+  .hero-copy-panel{
+    min-height:0;
+    height:auto;
+    padding:32px 3vw 26px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .hero-copy{
+    padding:34px 0 24px;
+  }
+  .hero--image h1{
+    font-size:clamp(58px,5.8vw,96px);
+    line-height:.88;
+    margin:0 0 20px;
+    letter-spacing:-.008em;
+  }
+  .hero--image .hero-copy p{
+    font-size:clamp(16px,1.15vw,20px);
+    line-height:1.22;
+    max-width:480px;
+  }
+  .hero-project{
+    min-height:0;
+    height:auto;
+    aspect-ratio:16/9;
+  }
+  .hero-project img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center center;
+  }
+  .hero--image .hero-foot{
+    padding:0;
+  }
+  .hero-services{
+    gap:6px;
+  }
+  .hero-services span{
+    padding:6px 8px;
+    font-size:10px;
+  }
+  .hero-project-label{
+    left:22px;
+    right:22px;
+    bottom:18px;
+  }
+  .hero-project-label strong{
+    font-size:clamp(34px,3vw,54px);
+  }
+}
