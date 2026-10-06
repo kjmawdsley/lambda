@@ -250,3 +250,20 @@
   height:34px;
   opacity:.48;
 }
+
+
+/* Wavelength v5 on case studies: one restrained marker in the case hero only. */
+.storyboard-section > .lambda-wave,
+.fox-deck-section > .lambda-wave,
+.case-section > .lambda-wave,
+.next-project > .lambda-wave{
+  display:none !important;
+}
+
+.case-hero > .lambda-wave{
+  left:0;
+  bottom:4%;
+  width:100%;
+  height:92px;
+  opacity:.46;
+}
