@@ -636,3 +636,103 @@ footer>div:last-child{text-align:right}
     animation:none !important;
   }
 }
+
+
+/* Hero wavelength v3 — single trim-path stroke across copy and image */
+.hero--image{
+  position:relative;
+}
+
+.hero-copy-panel::before,
+.hero-copy-panel::after,
+.hero-project::before{
+  content:none !important;
+}
+
+.hero-wave{
+  position:absolute;
+  z-index:2;
+  left:0;
+  right:0;
+  top:0;
+  bottom:14px;
+  width:100%;
+  height:calc(100% - 14px);
+  pointer-events:none;
+  overflow:visible;
+}
+
+.hero-wave-track,
+.hero-wave-line{
+  fill:none;
+  stroke:url(#hero-wave-gradient);
+  vector-effect:non-scaling-stroke;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.hero-wave-track{
+  stroke-width:1.35;
+  opacity:.16;
+}
+
+.hero-wave-line{
+  stroke-width:2.8;
+  opacity:.95;
+  stroke-dasharray:0 100;
+  stroke-dashoffset:0;
+  animation:heroWaveTrim 6.8s cubic-bezier(.6,0,.3,1) infinite;
+  filter:drop-shadow(0 0 5px rgba(255,255,255,.12));
+}
+
+.hero-copy-panel > *,
+.hero-project-label{
+  position:relative;
+  z-index:3;
+}
+
+@keyframes heroWaveTrim{
+  0%{
+    stroke-dasharray:0 100;
+    stroke-dashoffset:0;
+    opacity:0;
+  }
+  7%{
+    opacity:.95;
+  }
+  44%{
+    stroke-dasharray:100 0;
+    stroke-dashoffset:0;
+    opacity:.95;
+  }
+  60%{
+    stroke-dasharray:100 0;
+    stroke-dashoffset:0;
+    opacity:.95;
+  }
+  94%{
+    stroke-dasharray:0 100;
+    stroke-dashoffset:-100;
+    opacity:.95;
+  }
+  100%{
+    stroke-dasharray:0 100;
+    stroke-dashoffset:-100;
+    opacity:0;
+  }
+}
+
+@media(max-width:900px){
+  .hero-wave{
+    display:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-wave-line{
+    animation:none;
+    stroke-dasharray:none;
+    stroke-dashoffset:0;
+    opacity:.8;
+  }
+}
