@@ -175,3 +175,40 @@ footer>div:last-child{text-align:right}
   .hero-project-label strong{font-size:42px}
   .hero--image .spectrum{grid-row:3}
 }
+
+
+/* 2026-10-06 hero proportion refinement */
+@media (min-width:901px){
+  .hero--image{
+    min-height:auto;
+    grid-template-columns:minmax(380px,.68fr) minmax(0,1.32fr);
+    grid-template-rows:minmax(620px,74vh) 14px;
+    max-height:860px;
+  }
+  .hero-copy-panel,
+  .hero-project{
+    min-height:0;
+    height:100%;
+  }
+  .hero-copy-panel{
+    padding:34px 3vw 24px;
+  }
+  .hero-copy{
+    padding:3.5vh 0 2.5vh;
+  }
+  .hero--image h1{
+    font-size:clamp(64px,6.7vw,118px);
+    line-height:.88;
+    margin-bottom:24px;
+  }
+  .hero--image .hero-copy p{
+    font-size:clamp(17px,1.25vw,22px);
+    max-width:520px;
+  }
+  .hero-project img{
+    object-position:48% 50%;
+  }
+  .hero-project-label{
+    bottom:20px;
+  }
+}
