@@ -183,3 +183,70 @@
     animation:none !important;
   }
 }
+
+
+/* Project wavelength v4 — SVG trim-path system replaces drifting background waves */
+.case-hero::after,
+.storyboard-section::before,
+.fox-deck-section::after,
+.case-section::after,
+.next-project::before{
+  content:none !important;
+  background:none !important;
+  animation:none !important;
+}
+
+.case-hero,
+.case-section,
+.storyboard-section,
+.fox-deck-section,
+.next-project{
+  position:relative;
+  overflow:hidden;
+}
+
+.case-hero > :not(.lambda-wave),
+.case-section > :not(.lambda-wave),
+.storyboard-section > :not(.lambda-wave),
+.fox-deck-section > :not(.lambda-wave),
+.next-project > :not(.lambda-wave){
+  position:relative;
+  z-index:2;
+}
+
+.case-hero > .lambda-wave{
+  left:0;
+  bottom:5%;
+  height:108px;
+  opacity:.58;
+}
+
+.storyboard-section > .lambda-wave{
+  left:0;
+  top:7%;
+  height:114px;
+  opacity:.64;
+}
+
+.fox-deck-section > .lambda-wave{
+  left:30%;
+  width:74%;
+  top:7%;
+  height:92px;
+  opacity:.48;
+}
+
+.case-section > .lambda-wave{
+  left:0;
+  width:46%;
+  bottom:7%;
+  height:86px;
+  opacity:.42;
+}
+
+.next-project > .lambda-wave{
+  left:0;
+  top:-8px;
+  height:34px;
+  opacity:.48;
+}
