@@ -461,3 +461,178 @@ footer>div:last-child{text-align:right}
   .method::after{bottom:6%;height:72px}
   .contact::after{left:28%;top:12%;height:64px}
 }
+
+
+/* Wavelength system v2 — more visible, recurring and gently animated */
+@keyframes lambdaWaveDrift{
+  from{background-position:0 center}
+  to{background-position:720px center}
+}
+@keyframes lambdaWaveDriftReverse{
+  from{background-position:720px center}
+  to{background-position:0 center}
+}
+
+/* turn the existing section waves into moving, repeated wavelengths */
+.hero-copy-panel::after,
+.manifesto::after,
+.craft::after,
+.method::after,
+.contact::after{
+  background-repeat:repeat-x;
+  background-size:720px 60px;
+  animation:lambdaWaveDrift 22s linear infinite;
+}
+
+.hero-copy-panel::after{
+  opacity:.26;
+  height:110px;
+  bottom:52px;
+}
+.manifesto::after{
+  opacity:.24;
+  height:120px;
+  animation-duration:28s;
+  animation-direction:reverse;
+}
+.craft::after{
+  opacity:.18;
+  height:112px;
+  animation-duration:25s;
+}
+.method::after{
+  opacity:.22;
+  height:120px;
+  animation:lambdaWaveDriftReverse 30s linear infinite;
+}
+.contact::after{
+  opacity:.14;
+  height:108px;
+  animation-duration:26s;
+}
+
+/* a second frequency in key sections — offset and fainter */
+.hero-copy-panel::before,
+.manifesto::before,
+.method::before{
+  content:"";
+  position:absolute;
+  left:-8%;
+  right:-8%;
+  height:72px;
+  background-repeat:repeat-x;
+  background-size:540px 46px;
+  pointer-events:none;
+  z-index:0;
+  opacity:.11;
+}
+.hero-copy-panel::before{
+  top:18%;
+  background-image:url("assets/ui/wave-dark.svg");
+  animation:lambdaWaveDriftReverse 17s linear infinite;
+}
+.manifesto::before{
+  top:16%;
+  background-image:url("assets/ui/wave-light.svg");
+  animation:lambdaWaveDrift 19s linear infinite;
+}
+.method::before{
+  top:12%;
+  background-image:url("assets/ui/wave-dark.svg");
+  animation:lambdaWaveDrift 21s linear infinite;
+}
+
+/* wavelengths become part of the portfolio rhythm rather than only coloured sections */
+.work-head,
+.project-info{
+  position:relative;
+}
+.work-head::after{
+  content:"";
+  position:absolute;
+  left:38%;
+  right:0;
+  bottom:-16px;
+  height:24px;
+  background:url("assets/ui/wave-dark.svg") left center / 300px 25px repeat-x;
+  opacity:.18;
+  animation:lambdaWaveDrift 24s linear infinite;
+  pointer-events:none;
+}
+.project-info::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width:34%;
+  bottom:18px;
+  height:28px;
+  background:url("assets/ui/wave-dark.svg") left center / 320px 27px repeat-x;
+  opacity:.12;
+  animation:lambdaWaveDriftReverse 27s linear infinite;
+  pointer-events:none;
+}
+
+/* tiny moving wavelength on nav and links */
+.site-nav{
+  position:sticky;
+}
+.site-nav::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:5px;
+  background:url("assets/ui/wave-dark.svg") left center / 160px 10px repeat-x;
+  opacity:.11;
+  animation:lambdaWaveDrift 18s linear infinite;
+  pointer-events:none;
+}
+.text-link::after,
+.contact-link::after{
+  animation:lambdaWaveDrift 8s linear infinite;
+}
+
+/* image interaction: a wavelength briefly appears as you engage with work */
+.project-media::after,
+.hero-project::before{
+  content:"";
+  position:absolute;
+  left:-5%;
+  right:-5%;
+  top:50%;
+  height:54px;
+  background:url("assets/ui/wave-light.svg") left center / 480px 44px repeat-x;
+  opacity:0;
+  transform:translateY(-50%);
+  transition:opacity .35s ease;
+  animation:lambdaWaveDrift 16s linear infinite;
+  pointer-events:none;
+  z-index:2;
+}
+.project-media:hover::after,
+.hero-project:hover::before{
+  opacity:.34;
+}
+
+@media(max-width:800px){
+  .work-head::after{left:0;bottom:-14px;opacity:.13}
+  .project-info::after{display:none}
+  .hero-copy-panel::before,.manifesto::before,.method::before{opacity:.07}
+  .hero-copy-panel::after{opacity:.20}
+  .manifesto::after{opacity:.18}
+  .craft::after{opacity:.14}
+  .method::after{opacity:.16}
+  .contact::after{opacity:.10}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-copy-panel::before,.hero-copy-panel::after,
+  .manifesto::before,.manifesto::after,
+  .craft::after,.method::before,.method::after,.contact::after,
+  .work-head::after,.project-info::after,.site-nav::after,
+  .text-link::after,.contact-link::after,
+  .project-media::after,.hero-project::before{
+    animation:none !important;
+  }
+}
