@@ -96,3 +96,90 @@
 
 /* Fox treatment section uses the light page background, so override the shared dark storyboard text. */
 .fox-deck-section .storyboard-head p{color:var(--ink)}
+
+
+/* Carry the wavelength identity into case-study pages */
+.case-hero,
+.case-section,
+.storyboard-section,
+.fox-deck-section,
+.next-project{
+  position:relative;
+  overflow:hidden;
+}
+.case-hero > *,
+.case-section > *,
+.storyboard-section > *,
+.fox-deck-section > *,
+.next-project > *{
+  position:relative;
+  z-index:1;
+}
+
+.case-hero::after{
+  content:"";
+  position:absolute;
+  left:-4%;
+  right:-4%;
+  bottom:4%;
+  height:74px;
+  background:url("assets/ui/wave-dark.svg") left center / 620px 52px repeat-x;
+  opacity:.15;
+  animation:lambdaWaveDrift 25s linear infinite;
+  pointer-events:none;
+}
+.storyboard-section::before{
+  content:"";
+  position:absolute;
+  left:-5%;
+  right:-5%;
+  top:7%;
+  height:82px;
+  background:url("assets/ui/wave-light.svg") left center / 560px 48px repeat-x;
+  opacity:.16;
+  animation:lambdaWaveDriftReverse 23s linear infinite;
+  pointer-events:none;
+}
+.fox-deck-section::after{
+  content:"";
+  position:absolute;
+  left:34%;
+  right:-4%;
+  top:6%;
+  height:66px;
+  background:url("assets/ui/wave-dark.svg") left center / 500px 42px repeat-x;
+  opacity:.10;
+  animation:lambdaWaveDrift 28s linear infinite;
+  pointer-events:none;
+}
+.case-section::after{
+  content:"";
+  position:absolute;
+  left:-3%;
+  width:42%;
+  bottom:8%;
+  height:58px;
+  background:url("assets/ui/wave-dark.svg") left center / 440px 38px repeat-x;
+  opacity:.09;
+  animation:lambdaWaveDriftReverse 30s linear infinite;
+  pointer-events:none;
+}
+.next-project::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-1px;
+  height:18px;
+  background:url("assets/ui/wave-dark.svg") left center / 260px 18px repeat-x;
+  opacity:.17;
+  animation:lambdaWaveDrift 18s linear infinite;
+  pointer-events:none;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .case-hero::after,.storyboard-section::before,.fox-deck-section::after,
+  .case-section::after,.next-project::before{
+    animation:none !important;
+  }
+}
