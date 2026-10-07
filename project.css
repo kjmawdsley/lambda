@@ -366,3 +366,21 @@
     grid-template-columns:1fr;
   }
 }
+
+
+/* OVH artwork should display at its source aspect ratio. */
+.case-gallery--ovh{
+  align-items:start;
+}
+
+.case-gallery--ovh figure{
+  aspect-ratio:auto !important;
+  align-self:start;
+}
+
+.case-gallery--ovh figure img{
+  width:100%;
+  height:auto !important;
+  min-height:0 !important;
+  object-fit:contain !important;
+}
