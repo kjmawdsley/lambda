@@ -26,7 +26,13 @@
     text-transform:uppercase;letter-spacing:.06em;cursor:pointer;white-space:nowrap
   }
   .palette-lab .palette-switcher button[aria-pressed="true"]{background:#fff;color:#111}
-  .palette-lab .hero--image .hero-copy-panel{background:var(--hero-panel)}
+  .palette-lab .hero--image .hero-copy-panel{background:var(--hero-panel);color:var(--hero-ink,var(--ink))}
+  .palette-lab .hero--image .hero-copy p,
+  .palette-lab .hero--image .text-link{color:var(--hero-ink,var(--ink))}
+  .palette-lab .hero--image .hero-services span{color:var(--hero-ink,var(--ink));border-color:color-mix(in srgb,var(--hero-ink,var(--ink)) 55%,transparent)}
+  .palette-lab .manifesto{color:var(--manifesto-ink,#fff)}
+  .palette-lab .craft{color:var(--craft-ink,#fff)}
+  .palette-lab .method{color:var(--method-ink,var(--ink))}
   .palette-lab .spectrum i:nth-child(1){background:var(--blue)}
   .palette-lab .spectrum i:nth-child(2){background:var(--orange)}
   .palette-lab .spectrum i:nth-child(3){background:var(--pink)}
@@ -36,25 +42,60 @@
   body[data-palette="current"]{
     --paper:#f4f6ef;--ink:#11110f;--muted:#6a6b64;--line:rgba(17,17,15,.2);
     --blue:#173bd8;--orange:#ff5a1f;--pink:#ef9abb;--acid:#b7b852;--clay:#74251f;
-    --hero-panel:#ef9abb
+    --hero-panel:#ef9abb;--hero-ink:#11110f;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#11110f;--wave-color:#173bd8
   }
 
   body[data-palette="editorial"]{
     --paper:#f1eee6;--ink:#151513;--muted:#68665f;--line:rgba(21,21,19,.18);
     --blue:#2638d5;--orange:#f15a3a;--pink:#d39aaa;--acid:#b8c35c;--clay:#622d29;
-    --hero-panel:#d39aaa
+    --hero-panel:#d39aaa;--hero-ink:#151513;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#151513;--wave-color:#2638d5
   }
 
   body[data-palette="signal"]{
     --paper:#f3f1e9;--ink:#111216;--muted:#66676d;--line:rgba(17,18,22,.18);
     --blue:#173cff;--orange:#ff5b31;--pink:#c8c3ff;--acid:#c7df43;--clay:#202434;
-    --hero-panel:#c8c3ff
+    --hero-panel:#c8c3ff;--hero-ink:#111216;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#111216;--wave-color:#173cff
   }
 
   body[data-palette="studio"]{
     --paper:#eeeae1;--ink:#121211;--muted:#66635d;--line:rgba(18,18,17,.18);
     --blue:#2736c7;--orange:#e45a36;--pink:#d9d2c5;--acid:#a9b34f;--clay:#1e1d1b;
-    --hero-panel:#d9d2c5
+    --hero-panel:#d9d2c5;--hero-ink:#121211;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#121211;--wave-color:#2736c7
+  }
+
+  /* 04 — almost monochrome, with one toxic signal colour */
+  body[data-palette="noir-acid"]{
+    --paper:#f2efe7;--ink:#0b0b0b;--muted:#66625b;--line:rgba(11,11,11,.2);
+    --blue:#d8ff00;--orange:#0b0b0b;--pink:#f2efe7;--acid:#d8ff00;--clay:#151515;
+    --hero-panel:#0b0b0b;--hero-ink:#f2efe7;--manifesto-ink:#0b0b0b;--craft-ink:#f2efe7;--method-ink:#f2efe7;--wave-color:#d8ff00
+  }
+
+  /* 05 — fashion/editorial tech: ultraviolet, lilac and hot tangerine */
+  body[data-palette="ultraviolet"]{
+    --paper:#f2edf7;--ink:#17121d;--muted:#6e6575;--line:rgba(23,18,29,.18);
+    --blue:#4b19ff;--orange:#ff6a32;--pink:#d9c8ff;--acid:#f0d85a;--clay:#27143d;
+    --hero-panel:#d9c8ff;--hero-ink:#17121d;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#17121d;--wave-color:#4b19ff
+  }
+
+  /* 06 — deliberately non-tech: deep marine, mineral green, coral and sand */
+  body[data-palette="marine"]{
+    --paper:#ece8dd;--ink:#11201d;--muted:#62706b;--line:rgba(17,32,29,.18);
+    --blue:#073b3a;--orange:#e86d4f;--pink:#adcfc3;--acid:#d3c676;--clay:#315c52;
+    --hero-panel:#adcfc3;--hero-ink:#11201d;--manifesto-ink:#f5f1e8;--craft-ink:#f5f1e8;--method-ink:#11201d;--wave-color:#073b3a
+  }
+
+  /* 07 — hard graphic / modernist primary palette */
+  body[data-palette="primary"]{
+    --paper:#f5f1e8;--ink:#101010;--muted:#66615a;--line:rgba(16,16,16,.2);
+    --blue:#1647d8;--orange:#f0442f;--pink:#f0d53e;--acid:#f5f1e8;--clay:#101010;
+    --hero-panel:#f0d53e;--hero-ink:#101010;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#101010;--wave-color:#1647d8
+  }
+
+  /* 08 — cinematic and warm: oxblood, cream, ice blue, copper */
+  body[data-palette="cinema"]{
+    --paper:#eee7dc;--ink:#211514;--muted:#766862;--line:rgba(33,21,20,.18);
+    --blue:#8c1e2d;--orange:#b86239;--pink:#d9e6e8;--acid:#d2b36e;--clay:#351b1e;
+    --hero-panel:#d9e6e8;--hero-ink:#211514;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#211514;--wave-color:#8c1e2d
   }
 
   @media(max-width:800px){
@@ -76,6 +117,11 @@
   <button type="button" data-theme="editorial" aria-pressed="false">01 Editorial</button>
   <button type="button" data-theme="signal" aria-pressed="false">02 Signal</button>
   <button type="button" data-theme="studio" aria-pressed="false">03 Studio</button>
+  <button type="button" data-theme="noir-acid" aria-pressed="false">04 Noir Acid</button>
+  <button type="button" data-theme="ultraviolet" aria-pressed="false">05 Ultraviolet</button>
+  <button type="button" data-theme="marine" aria-pressed="false">06 Marine</button>
+  <button type="button" data-theme="primary" aria-pressed="false">07 Primary</button>
+  <button type="button" data-theme="cinema" aria-pressed="false">08 Cinema</button>
 </div>
   <main id="top">
     <section class="hero hero--image">
@@ -200,10 +246,20 @@
 <script>
 (() => {
   const buttons=[...document.querySelectorAll('.palette-switcher button')];
+
+  function syncWaveColour(){
+    const colour=getComputedStyle(document.body).getPropertyValue('--wave-color').trim() || '#173bd8';
+    document.querySelectorAll('.lambda-wave--dark:not(.lambda-wave--hero) path').forEach(path => path.setAttribute('stroke',colour));
+    document.querySelectorAll('#lambda-hero-wave-gradient stop:nth-child(-n+2)').forEach(stop => stop.setAttribute('stop-color',colour));
+  }
+
   buttons.forEach(button => button.addEventListener('click', () => {
     document.body.dataset.palette=button.dataset.theme;
     buttons.forEach(b => b.setAttribute('aria-pressed', b===button ? 'true' : 'false'));
+    syncWaveColour();
   }));
+
+  requestAnimationFrame(syncWaveColour);
 })();
 </script>
 </body>
