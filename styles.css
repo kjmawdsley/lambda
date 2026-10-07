@@ -1,7 +1,7 @@
 :root{
-  --paper:#f2edf7;--ink:#17121d;--muted:#6e6575;--line:rgba(23,18,29,.18);
-  --blue:#4b19ff;--orange:#ff6a32;--pink:#d9c8ff;--acid:#f0d85a;--clay:#27143d;
-  --accent:#f0d85a;
+  --paper:#f3eff5;--ink:#170f1c;--muted:#716976;--line:rgba(23,15,28,.18);
+  --blue:#5a2dff;--orange:#ff415c;--pink:#e5d6ef;--acid:#ff7255;--clay:#1d0b2e;
+  --accent:#ff415c;
   --serif:"Boska",Georgia,serif;--sans:"Bricolage Grotesque",Arial,sans-serif
 }
 *{box-sizing:border-box}
@@ -1438,4 +1438,123 @@ footer a:hover{
 .manifesto > .lambda-wave .lambda-wave__track,
 .manifesto > .lambda-wave .lambda-wave__runner{
   stroke:#4b19ff;
+}
+
+
+/* 2026-10-07 — Final colour system: Beyond Visible */
+body{
+  background:#f3eff5;
+  color:#170f1c;
+}
+
+.site-nav{
+  background:rgba(243,239,245,.9);
+  border-color:rgba(23,15,28,.18);
+}
+
+/* Ultraviolet foundation */
+.hero--image .hero-copy-panel{
+  background:#210b35;
+  color:#fbf7ff;
+}
+
+.hero--image .hero-copy p,
+.hero--image .text-link{
+  color:#fbf7ff;
+}
+
+.hero--image .hero-services span{
+  color:#fbf7ff;
+  border-color:rgba(251,247,255,.48);
+  background:transparent;
+}
+
+/* Soft UV field below the hero */
+.manifesto{
+  background:#e5d6ef;
+  color:#170f1c;
+}
+
+.manifesto > .lambda-wave .lambda-wave__track,
+.manifesto > .lambda-wave .lambda-wave__runner{
+  stroke:#5a2dff;
+}
+
+/* Dark neutral-plum for motion/reel */
+.craft{
+  background:#130e19;
+  color:#fbf7ff;
+}
+
+/* Infrared blush for the Lambda rationale */
+.method{
+  background:#f2c5cc;
+  color:#170f1c;
+}
+
+.method .lambda-wave__track,
+.method .lambda-wave__runner{
+  stroke:#ff415c;
+}
+
+.equation{
+  color:#ff415c;
+  opacity:1;
+}
+
+/* Thin non-visible spectrum cue: UV -> dark gap -> IR */
+.hero--image .spectrum i:nth-child(1){background:#5a2dff}
+.hero--image .spectrum i:nth-child(2){background:#8d65ff}
+.hero--image .spectrum i:nth-child(3){background:#1d0b2e}
+.hero--image .spectrum i:nth-child(4){background:#ff415c}
+.hero--image .spectrum i:nth-child(5){background:#ff7255}
+
+/* Infrared interaction signal */
+.site-nav a:hover,
+.brand:hover,
+.contact-link:hover,
+.project-back:hover,
+.next-project a:hover,
+footer a:hover{
+  color:#ff415c;
+}
+
+.site-nav nav a:after{
+  background:#ff415c;
+}
+
+.hero--image .text-link:hover,
+.hero-project:hover .hero-project-label,
+.craft a:hover{
+  color:#ff7255;
+}
+
+.project-media:hover .media-label{
+  background:#ff7255;
+  color:#170f1c;
+  transform:translateY(-2px);
+}
+
+.next-project a:hover strong{
+  color:#ff415c;
+}
+
+.contact-link:hover{
+  border-color:#ff415c;
+}
+
+.manifesto a:hover{
+  color:#5a2dff;
+}
+
+.method a:hover{
+  color:#ff415c;
+}
+
+.project-media--ovh-grid{
+  background:#130e19;
+}
+
+.reel-frame{
+  border-color:rgba(251,247,255,.28);
 }
