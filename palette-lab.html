@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Lambda — creative direction and production for ambitious ideas. GenAI, motion and 3D, used with judgement.">
+  <title>Lambda — Creative craft, accelerated</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=boska@300,301,400,401,500,501&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+<style>
+  body.palette-lab{padding-bottom:64px}
+  .palette-lab .palette-switcher{
+    position:fixed;z-index:999;left:50%;bottom:18px;transform:translateX(-50%);
+    display:flex;gap:6px;align-items:center;padding:6px;
+    background:rgba(17,17,15,.9);backdrop-filter:blur(14px);border-radius:999px;
+    box-shadow:0 8px 30px rgba(0,0,0,.2)
+  }
+  .palette-lab .palette-switcher button{
+    appearance:none;border:0;background:transparent;color:#fff;padding:9px 12px;
+    border-radius:999px;font:600 11px/1 "Bricolage Grotesque",sans-serif;
+    text-transform:uppercase;letter-spacing:.06em;cursor:pointer;white-space:nowrap
+  }
+  .palette-lab .palette-switcher button[aria-pressed="true"]{background:#fff;color:#111}
+  .palette-lab .hero--image .hero-copy-panel{background:var(--hero-panel)}
+  .palette-lab .spectrum i:nth-child(1){background:var(--blue)}
+  .palette-lab .spectrum i:nth-child(2){background:var(--orange)}
+  .palette-lab .spectrum i:nth-child(3){background:var(--pink)}
+  .palette-lab .spectrum i:nth-child(4){background:var(--acid)}
+  .palette-lab .spectrum i:nth-child(5){background:var(--clay)}
+
+  body[data-palette="current"]{
+    --paper:#f4f6ef;--ink:#11110f;--muted:#6a6b64;--line:rgba(17,17,15,.2);
+    --blue:#173bd8;--orange:#ff5a1f;--pink:#ef9abb;--acid:#b7b852;--clay:#74251f;
+    --hero-panel:#ef9abb
+  }
+
+  body[data-palette="editorial"]{
+    --paper:#f1eee6;--ink:#151513;--muted:#68665f;--line:rgba(21,21,19,.18);
+    --blue:#2638d5;--orange:#f15a3a;--pink:#d39aaa;--acid:#b8c35c;--clay:#622d29;
+    --hero-panel:#d39aaa
+  }
+
+  body[data-palette="signal"]{
+    --paper:#f3f1e9;--ink:#111216;--muted:#66676d;--line:rgba(17,18,22,.18);
+    --blue:#173cff;--orange:#ff5b31;--pink:#c8c3ff;--acid:#c7df43;--clay:#202434;
+    --hero-panel:#c8c3ff
+  }
+
+  body[data-palette="studio"]{
+    --paper:#eeeae1;--ink:#121211;--muted:#66635d;--line:rgba(18,18,17,.18);
+    --blue:#2736c7;--orange:#e45a36;--pink:#d9d2c5;--acid:#a9b34f;--clay:#1e1d1b;
+    --hero-panel:#d9d2c5
+  }
+
+  @media(max-width:800px){
+    .palette-lab .palette-switcher{left:12px;right:12px;transform:none;overflow:auto;justify-content:flex-start}
+  }
+</style>
+</head>
+<body class="palette-lab" data-palette="current">
+  <header class="site-nav">
+    <a class="brand" href="#top" aria-label="Lambda home">
+      <span class="brand-word">Lambda</span>
+    </a>
+    <nav aria-label="Primary"><a href="#work">Work</a><a href="#approach">Approach</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  
+<div class="palette-switcher" aria-label="Palette preview">
+  <button type="button" data-theme="current" aria-pressed="true">Current</button>
+  <button type="button" data-theme="editorial" aria-pressed="false">01 Editorial</button>
+  <button type="button" data-theme="signal" aria-pressed="false">02 Signal</button>
+  <button type="button" data-theme="studio" aria-pressed="false">03 Studio</button>
+</div>
+  <main id="top">
+    <section class="hero hero--image">
+      <div class="hero-copy-panel">
+        <div class="hero-kicker">Lambda / Creative direction + production</div>
+        <div class="hero-copy">
+          <h1><span>Ambitious ideas.</span><em>Properly made.</em></h1>
+          <p>Campaign imagery, visual development, storyboards and moving image — combining GenAI, motion and 3D with the craft to make it all hold together.</p>
+        </div>
+        <div class="hero-foot">
+          <div class="hero-services"><span>GenAI</span><span>Visual development</span><span>Storyboards</span><span>Motion + 3D</span></div>
+          <a class="text-link" href="#work">Selected work ↘</a>
+        </div>
+      </div>
+      <a class="hero-project" href="projects/rws-weave.html" aria-label="View RWS Weave project">
+        <img src="assets/rws/USA%20(01).jpg" alt="RWS Weave campaign visual over a US city">
+        <div class="hero-project-label"><span>Featured work</span><strong>RWS / Weave</strong><span>Visual development / 3D + GenAI ↗</span></div>
+      </a>
+
+      <div class="spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+
+    <section class="manifesto" id="approach">
+      <div class="eyebrow">01 / Point of view</div>
+      <div class="manifesto-grid">
+        <h2>New tools.<br><em>Same standards.</em></h2>
+        <div class="manifesto-copy">
+          <p>The useful thing about new tools isn't that they can make more. It's that they can compress the distance between a good idea and something convincing enough to judge.</p>
+          <p>Lambda combines senior creative direction with GenAI, motion, 3D and post-production craft to get ambitious work visible quickly — while keeping consistency, intent and finish intact.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="work-head"><div class="eyebrow">02 / Selected work</div><p>Different mediums. Same standard.</p></div>
+
+      <article class="project project--ovh">
+        <a class="project-media project-media--ovh-grid" href="projects/ovhcloud.html" aria-label="View OVHcloud campaign imagery project">
+          <img src="assets/ovh/Character%201_Original%20(01).jpg" alt="OVHcloud campaign artwork 1" loading="lazy">
+          <img src="assets/ovh/Character%202_Original%20(02).jpg" alt="OVHcloud campaign artwork 2" loading="lazy">
+          <img src="assets/ovh/Character%203_Original%20(03).jpg" alt="OVHcloud campaign artwork 3" loading="lazy">
+          <img src="assets/ovh/Character%204_Original%20(04).jpg" alt="OVHcloud campaign artwork 4" loading="lazy">
+          <span class="media-label">View project ↗</span>
+        </a>
+        <div class="project-info">
+          <div><span class="project-no">01</span><span class="project-tags">OVHcloud / Campaign imagery / GenAI</span></div>
+          <div>
+            <h3>Outsmarting the hyperscalers.</h3>
+            <p>Big-production visual impact created with a deliberately leaner AI-assisted approach — helping a challenger brand look anything but small.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project project--rws">
+        <a class="project-media" href="projects/rws-weave.html" aria-label="View RWS Weave visual development project">
+          <img src="assets/rws/East%20Asia%20(02).jpg" alt="RWS Weave campaign visual over an East Asian city" loading="lazy">
+          <span class="media-label">View project ↗</span>
+        </a>
+        <div class="project-info">
+          <div><span class="project-no">02</span><span class="project-tags">RWS / Weave / Visual development / 3D previs / GenAI</span></div>
+          <div>
+            <h3>Build the world. Then keep it consistent.</h3>
+            <p>A hybrid workflow built around locked geometry, style systems and art direction — designed to hold characters, environments and a distinctive campaign world together across multiple generated scenes.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project project--fox">
+        <a class="project-media" href="projects/fox-storyboards.html" aria-label="View Fox rebrand storyboard and previsualisation project">
+          <img src="assets/fox/storyboards/Frame_14.png" alt="Fox rebrand storyboard frame showing the red loop in motion" loading="lazy">
+          <span class="media-label">View project ↗</span>
+        </a>
+        <div class="project-info">
+          <div><span class="project-no">03</span><span class="project-tags">Fox / Storyboarding / Previsualisation / Motion thinking</span></div>
+          <div>
+            <h3>Make the idea tangible before production starts.</h3>
+            <p>Rapid storyboard development used to turn an abstract brand device into shots, sequences and motion behaviours — making the creative idea easier to judge before production.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="craft">
+      <div class="craft-intro">
+        <div class="eyebrow">03 / Beyond generation</div>
+        <h2>When the idea needs to go further, <em>I can make it move.</em></h2>
+      </div>
+      <div class="capabilities" role="list">
+        <div role="listitem">Motion design</div><div role="listitem">3D + CGI</div><div role="listitem">Editing + post</div><div role="listitem">Compositing</div>
+      </div>
+      <div class="reel-block">
+        <div class="reel-meta"><span>Showreel</span><span>Selected motion work</span></div>
+        <div class="reel-frame">
+          <iframe src="https://player.vimeo.com/video/1120419142?title=0&byline=0&portrait=0" title="Lambda motion showreel" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="method">
+      <div class="method-title"><div class="eyebrow">04 / Why Lambda</div><h2>The medium shapes the outcome.</h2></div>
+      <div class="method-body">
+        <p class="equation"><span>v</span> = c / n</p>
+        <p>Light changes speed as it moves through different media. Creative work does too. Budget, timeline, brand, technology and production reality aren't obstacles to work around — they're the conditions the idea has to move through.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="eyebrow">05 / Start something</div>
+      <h2>Got an ambitious idea<br>and not enough <em>time?</em></h2>
+      <a class="contact-link" href="mailto:hello@example.com">hello@example.com ↗</a>
+      <p class="contact-note">Replace this address before launch.</p>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand brand--footer" href="#top"><span class="brand-word">Lambda</span></a>
+    <div>Creative craft, accelerated.</div><div>UK / Available selectively</div>
+  </footer>
+
+  <script src="script.js"></script>
+
+<script>
+(() => {
+  const buttons=[...document.querySelectorAll('.palette-switcher button')];
+  buttons.forEach(button => button.addEventListener('click', () => {
+    document.body.dataset.palette=button.dataset.theme;
+    buttons.forEach(b => b.setAttribute('aria-pressed', b===button ? 'true' : 'false'));
+  }));
+})();
+</script>
+</body>
+</html>
