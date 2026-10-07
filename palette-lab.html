@@ -98,6 +98,19 @@
     --hero-panel:#d9e6e8;--hero-ink:#211514;--manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#211514;--wave-color:#8c1e2d
   }
 
+  /* 09 — infrared: black cherry, heated coral, dusty blush, ember gold */
+  body[data-palette="infrared"]{
+    --paper:#f5eee9;--ink:#1d0b10;--muted:#78676b;--line:rgba(29,11,16,.18);
+    --blue:#ff3f4f;--orange:#ff6b45;--pink:#efb9b0;--acid:#ffb320;--clay:#541126;
+    --hero-panel:#260711;--hero-ink:#fff4ef;--manifesto-ink:#1d0b10;--craft-ink:#fff4ef;--method-ink:#1d0b10;--wave-color:#ff3f4f
+  }
+  body[data-palette="infrared"] .hero--image .hero-copy-panel{background:#260711}
+  body[data-palette="infrared"] .manifesto{background:#efb9b0;color:#1d0b10}
+  body[data-palette="infrared"] .craft{background:#541126;color:#fff4ef}
+  body[data-palette="infrared"] .method{background:#ffb320;color:#1d0b10}
+  body[data-palette="infrared"] .manifesto > .lambda-wave path{stroke:#ff3f4f}
+  body[data-palette="infrared"] .method > .lambda-wave path{stroke:#541126}
+
   @media(max-width:800px){
     .palette-lab .palette-switcher{left:12px;right:12px;transform:none;overflow:auto;justify-content:flex-start}
   }
@@ -122,6 +135,7 @@
   <button type="button" data-theme="marine" aria-pressed="false">06 Marine</button>
   <button type="button" data-theme="primary" aria-pressed="false">07 Primary</button>
   <button type="button" data-theme="cinema" aria-pressed="false">08 Cinema</button>
+  <button type="button" data-theme="infrared" aria-pressed="false">09 Infrared</button>
 </div>
   <main id="top">
     <section class="hero hero--image">
