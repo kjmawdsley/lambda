@@ -1,7 +1,7 @@
 :root{
-  --paper:#f2efe7;--ink:#0b0b0b;--muted:#66625b;--line:rgba(11,11,11,.2);
-  --blue:#d8ff00;--orange:#0b0b0b;--pink:#f2efe7;--acid:#d8ff00;--clay:#151515;
-  --accent:#d8ff00;
+  --paper:#f2edf7;--ink:#17121d;--muted:#6e6575;--line:rgba(23,18,29,.18);
+  --blue:#4b19ff;--orange:#ff6a32;--pink:#d9c8ff;--acid:#f0d85a;--clay:#27143d;
+  --accent:#f0d85a;
   --serif:"Boska",Georgia,serif;--sans:"Bricolage Grotesque",Arial,sans-serif
 }
 *{box-sizing:border-box}
@@ -1304,4 +1304,126 @@ footer a:hover{
 
 .reel-frame{
   border-color:rgba(242,239,231,.28);
+}
+
+
+/* 2026-10-07 — Ultraviolet identity */
+body{
+  background:var(--paper);
+  color:var(--ink);
+}
+
+.site-nav{
+  background:rgba(242,237,247,.9);
+}
+
+/* Strong colour break between the opening two sections. */
+.hero--image .hero-copy-panel{
+  background:#4b19ff;
+  color:#fff;
+}
+
+.hero--image .hero-copy p,
+.hero--image .text-link{
+  color:#fff;
+}
+
+.hero--image .hero-services span{
+  color:#fff;
+  border-color:rgba(255,255,255,.5);
+  background:transparent;
+}
+
+.manifesto{
+  background:#ff6a32;
+  color:#17121d;
+}
+
+/* Keep the wave visible against the orange manifesto. */
+.manifesto > .lambda-wave .lambda-wave__track,
+.manifesto > .lambda-wave .lambda-wave__runner{
+  stroke:#27143d;
+}
+
+/* Secondary colour fields use the darker and softer ends of the palette. */
+.craft{
+  background:#27143d;
+  color:#fff;
+}
+
+.method{
+  background:#d9c8ff;
+  color:#17121d;
+}
+
+.method .lambda-wave__track,
+.method .lambda-wave__runner{
+  stroke:#4b19ff;
+}
+
+.equation{
+  color:#4b19ff;
+  opacity:1;
+}
+
+/* Keep the thin spectrum genuinely ultraviolet rather than rainbow-like. */
+.hero--image .spectrum i:nth-child(1){background:#4b19ff}
+.hero--image .spectrum i:nth-child(2){background:#ff6a32}
+.hero--image .spectrum i:nth-child(3){background:#d9c8ff}
+.hero--image .spectrum i:nth-child(4){background:#f0d85a}
+.hero--image .spectrum i:nth-child(5){background:#27143d}
+
+/* Hover language: violet on light surfaces, yellow on dark/purple surfaces. */
+.site-nav a:hover,
+.brand:hover,
+.contact-link:hover,
+.project-back:hover,
+.next-project a:hover,
+footer a:hover{
+  color:#4b19ff;
+}
+
+.site-nav nav a:after{
+  background:#4b19ff;
+}
+
+.hero--image .text-link:hover,
+.hero-project:hover .hero-project-label{
+  color:#f0d85a;
+}
+
+.project-media:hover .media-label{
+  background:#f0d85a;
+  color:#17121d;
+  transform:translateY(-2px);
+}
+
+.next-project a:hover strong{
+  color:#4b19ff;
+}
+
+.contact-link:hover{
+  border-color:#4b19ff;
+}
+
+/* Links sitting on saturated colour fields use a high-contrast local accent. */
+.manifesto a:hover{
+  color:#27143d;
+}
+
+.craft a:hover{
+  color:#f0d85a;
+}
+
+.method a:hover{
+  color:#4b19ff;
+}
+
+/* OVH grid and motion reel framing follow the new dark neutral. */
+.project-media--ovh-grid{
+  background:#27143d;
+}
+
+.reel-frame{
+  border-color:rgba(255,255,255,.28);
 }
