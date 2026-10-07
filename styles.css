@@ -1,6 +1,7 @@
 :root{
-  --paper:#f4f6ef;--ink:#11110f;--muted:#6a6b64;--line:rgba(17,17,15,.2);
-  --blue:#173bd8;--orange:#ff5a1f;--pink:#ef9abb;--acid:#b7b852;--clay:#74251f;
+  --paper:#f2efe7;--ink:#0b0b0b;--muted:#66625b;--line:rgba(11,11,11,.2);
+  --blue:#d8ff00;--orange:#0b0b0b;--pink:#f2efe7;--acid:#d8ff00;--clay:#151515;
+  --accent:#d8ff00;
   --serif:"Boska",Georgia,serif;--sans:"Bricolage Grotesque",Arial,sans-serif
 }
 *{box-sizing:border-box}
@@ -1176,4 +1177,131 @@ footer>div:last-child{text-align:right}
 
 @media(max-width:800px){
   .reel-block{margin-top:52px}
+}
+
+
+/* 2026-10-07 — Noir Acid identity */
+body{
+  background:var(--paper);
+  color:var(--ink);
+}
+
+.site-nav{
+  background:rgba(242,239,231,.9);
+}
+
+/* Hero becomes the hard black / acid signature. */
+.hero--image .hero-copy-panel{
+  background:#0b0b0b;
+  color:var(--paper);
+}
+
+.hero--image .hero-copy p,
+.hero--image .text-link{
+  color:var(--paper);
+}
+
+.hero--image .hero-services span{
+  color:var(--paper);
+  border-color:rgba(242,239,231,.48);
+  background:transparent;
+}
+
+/* Acid is the one loud brand field. */
+.manifesto{
+  background:var(--accent);
+  color:var(--ink);
+}
+
+.manifesto > .lambda-wave .lambda-wave__track,
+.manifesto > .lambda-wave .lambda-wave__runner{
+  stroke:var(--ink);
+}
+
+.craft{
+  background:#151515;
+  color:var(--paper);
+}
+
+.method{
+  background:#0b0b0b;
+  color:var(--paper);
+}
+
+.method .lambda-wave__track,
+.method .lambda-wave__runner{
+  stroke:var(--accent);
+}
+
+.equation{
+  color:var(--accent);
+  opacity:1;
+}
+
+.hero--image .spectrum i:nth-child(1),
+.hero--image .spectrum i:nth-child(4){
+  background:var(--accent);
+}
+.hero--image .spectrum i:nth-child(2),
+.hero--image .spectrum i:nth-child(5){
+  background:#0b0b0b;
+}
+.hero--image .spectrum i:nth-child(3){
+  background:var(--paper);
+}
+
+/* One consistent hover behaviour: acid becomes the interaction signal. */
+a{
+  transition:color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.site-nav a:hover,
+.brand:hover,
+.text-link:hover,
+.contact-link:hover,
+.project-back:hover,
+.next-project a:hover,
+footer a:hover{
+  color:var(--accent);
+}
+
+.site-nav nav a:after{
+  background:var(--accent);
+}
+
+.media-label{
+  transition:background-color .2s ease,color .2s ease,transform .2s ease;
+}
+
+.project-media:hover .media-label{
+  background:var(--accent);
+  color:var(--ink);
+  transform:translateY(-2px);
+}
+
+.hero-project:hover .hero-project-label{
+  color:var(--accent);
+}
+
+.next-project a:hover strong{
+  color:var(--accent);
+}
+
+.contact-link:hover{
+  border-color:var(--accent);
+}
+
+/* Keep acid hovers legible when the link already sits on an acid field. */
+.manifesto a:hover{
+  color:var(--ink);
+  text-decoration-color:var(--ink);
+}
+
+/* Video and image framing sit better against the reduced palette. */
+.project-media--ovh-grid{
+  background:#0b0b0b;
+}
+
+.reel-frame{
+  border-color:rgba(242,239,231,.28);
 }
