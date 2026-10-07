@@ -111,6 +111,100 @@
   body[data-palette="infrared"] .manifesto > .lambda-wave path{stroke:#ff3f4f}
   body[data-palette="infrared"] .method > .lambda-wave path{stroke:#541126}
 
+
+  /* Palette lab isolation: override live-site hardcoded colour fields so every theme is a true full-page preview. */
+  .palette-lab .site-nav{
+    background:color-mix(in srgb,var(--paper) 90%,transparent);
+    border-color:var(--line);
+  }
+  .palette-lab .manifesto{
+    background:var(--manifesto-bg);
+    color:var(--manifesto-ink);
+  }
+  .palette-lab .craft{
+    background:var(--craft-bg);
+    color:var(--craft-ink);
+  }
+  .palette-lab .method{
+    background:var(--method-bg);
+    color:var(--method-ink);
+  }
+  .palette-lab .equation{color:var(--equation-colour)}
+  .palette-lab .project-media--ovh-grid{background:var(--deep)}
+  .palette-lab .reel-frame{border-color:color-mix(in srgb,var(--craft-ink) 28%,transparent)}
+
+  body[data-palette="current"]{
+    --manifesto-bg:#173bd8;--craft-bg:#74251f;--method-bg:#ff5a1f;
+    --manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#11110f;
+    --equation-colour:#11110f;--deep:#11110f;--hover:#173bd8;--hover-dark:#fed04a
+  }
+  body[data-palette="editorial"]{
+    --manifesto-bg:#2638d5;--craft-bg:#622d29;--method-bg:#f15a3a;
+    --manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#151513;
+    --equation-colour:#151513;--deep:#151513;--hover:#2638d5;--hover-dark:#b8c35c
+  }
+  body[data-palette="signal"]{
+    --manifesto-bg:#173cff;--craft-bg:#202434;--method-bg:#c8c3ff;
+    --manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#111216;
+    --equation-colour:#173cff;--deep:#202434;--hover:#173cff;--hover-dark:#c7df43
+  }
+  body[data-palette="studio"]{
+    --manifesto-bg:#2736c7;--craft-bg:#1e1d1b;--method-bg:#d9d2c5;
+    --manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#121211;
+    --equation-colour:#2736c7;--deep:#1e1d1b;--hover:#2736c7;--hover-dark:#a9b34f
+  }
+  body[data-palette="noir-acid"]{
+    --manifesto-bg:#d8ff00;--craft-bg:#151515;--method-bg:#0b0b0b;
+    --manifesto-ink:#0b0b0b;--craft-ink:#f2efe7;--method-ink:#f2efe7;
+    --equation-colour:#d8ff00;--deep:#0b0b0b;--hover:#d8ff00;--hover-dark:#d8ff00
+  }
+  body[data-palette="ultraviolet"]{
+    --hero-panel:#4b19ff;--hero-ink:#fff;
+    --manifesto-bg:#e8e1b7;--craft-bg:#27143d;--method-bg:#d9c8ff;
+    --manifesto-ink:#17121d;--craft-ink:#fff;--method-ink:#17121d;
+    --equation-colour:#4b19ff;--deep:#27143d;--hover:#4b19ff;--hover-dark:#f0d85a
+  }
+  body[data-palette="marine"]{
+    --manifesto-bg:#073b3a;--craft-bg:#315c52;--method-bg:#d3c676;
+    --manifesto-ink:#f5f1e8;--craft-ink:#f5f1e8;--method-ink:#11201d;
+    --equation-colour:#073b3a;--deep:#11201d;--hover:#073b3a;--hover-dark:#d3c676
+  }
+  body[data-palette="primary"]{
+    --manifesto-bg:#1647d8;--craft-bg:#101010;--method-bg:#f0d53e;
+    --manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#101010;
+    --equation-colour:#1647d8;--deep:#101010;--hover:#1647d8;--hover-dark:#f0d53e
+  }
+  body[data-palette="cinema"]{
+    --manifesto-bg:#8c1e2d;--craft-bg:#351b1e;--method-bg:#d2b36e;
+    --manifesto-ink:#fff;--craft-ink:#fff;--method-ink:#211514;
+    --equation-colour:#8c1e2d;--deep:#351b1e;--hover:#8c1e2d;--hover-dark:#d2b36e
+  }
+  body[data-palette="infrared"]{
+    --manifesto-bg:#efb9b0;--craft-bg:#541126;--method-bg:#ffb320;
+    --manifesto-ink:#1d0b10;--craft-ink:#fff4ef;--method-ink:#1d0b10;
+    --equation-colour:#541126;--deep:#260711;--hover:#ff3f4f;--hover-dark:#ffb320
+  }
+
+  .palette-lab .site-nav a:hover,
+  .palette-lab .brand:hover,
+  .palette-lab .contact-link:hover,
+  .palette-lab .project-back:hover,
+  .palette-lab .next-project a:hover,
+  .palette-lab footer a:hover{
+    color:var(--hover);
+  }
+  .palette-lab .site-nav nav a:after{background:var(--hover)}
+  .palette-lab .hero--image .text-link:hover,
+  .palette-lab .hero-project:hover .hero-project-label,
+  .palette-lab .craft a:hover{
+    color:var(--hover-dark);
+  }
+  .palette-lab .project-media:hover .media-label{
+    background:var(--hover-dark);
+    color:var(--ink);
+  }
+  .palette-lab .contact-link:hover{border-color:var(--hover)}
+
   @media(max-width:800px){
     .palette-lab .palette-switcher{left:12px;right:12px;transform:none;overflow:auto;justify-content:flex-start}
   }
