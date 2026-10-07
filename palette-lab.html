@@ -112,6 +112,13 @@
   body[data-palette="infrared"] .method > .lambda-wave path{stroke:#541126}
 
 
+  /* 10 — beyond visible: ultraviolet foundation with infrared signal accents */
+  body[data-palette="beyond-visible"]{
+    --paper:#f3eff5;--ink:#170f1c;--muted:#716976;--line:rgba(23,15,28,.18);
+    --blue:#5a2dff;--orange:#ff415c;--pink:#e5d6ef;--acid:#ff7255;--clay:#1d0b2e;
+    --hero-panel:#210b35;--hero-ink:#fbf7ff;--manifesto-ink:#170f1c;--craft-ink:#fbf7ff;--method-ink:#170f1c;--wave-color:#5a2dff
+  }
+
   /* Palette lab isolation: override live-site hardcoded colour fields so every theme is a true full-page preview. */
   .palette-lab .site-nav{
     background:color-mix(in srgb,var(--paper) 90%,transparent);
@@ -184,6 +191,12 @@
     --manifesto-ink:#1d0b10;--craft-ink:#fff4ef;--method-ink:#1d0b10;
     --equation-colour:#541126;--deep:#260711;--hover:#ff3f4f;--hover-dark:#ffb320
   }
+  body[data-palette="beyond-visible"]{
+    --hero-panel:#210b35;--hero-ink:#fbf7ff;
+    --manifesto-bg:#e5d6ef;--craft-bg:#130e19;--method-bg:#f2c5cc;
+    --manifesto-ink:#170f1c;--craft-ink:#fbf7ff;--method-ink:#170f1c;
+    --equation-colour:#ff415c;--deep:#130e19;--hover:#ff415c;--hover-dark:#ff7255
+  }
 
   .palette-lab .site-nav a:hover,
   .palette-lab .brand:hover,
@@ -204,6 +217,14 @@
     color:var(--ink);
   }
   .palette-lab .contact-link:hover{border-color:var(--hover)}
+
+  body[data-palette="beyond-visible"] .manifesto > .lambda-wave path{stroke:#5a2dff}
+  body[data-palette="beyond-visible"] .method > .lambda-wave path{stroke:#ff415c}
+  body[data-palette="beyond-visible"] .hero--image .spectrum i:nth-child(1){background:#5a2dff}
+  body[data-palette="beyond-visible"] .hero--image .spectrum i:nth-child(2){background:#8d65ff}
+  body[data-palette="beyond-visible"] .hero--image .spectrum i:nth-child(3){background:#1d0b2e}
+  body[data-palette="beyond-visible"] .hero--image .spectrum i:nth-child(4){background:#ff415c}
+  body[data-palette="beyond-visible"] .hero--image .spectrum i:nth-child(5){background:#ff7255}
 
   @media(max-width:800px){
     .palette-lab .palette-switcher{left:12px;right:12px;transform:none;overflow:auto;justify-content:flex-start}
@@ -230,6 +251,7 @@
   <button type="button" data-theme="primary" aria-pressed="false">07 Primary</button>
   <button type="button" data-theme="cinema" aria-pressed="false">08 Cinema</button>
   <button type="button" data-theme="infrared" aria-pressed="false">09 Infrared</button>
+  <button type="button" data-theme="beyond-visible" aria-pressed="false">10 Beyond Visible</button>
 </div>
   <main id="top">
     <section class="hero hero--image">
@@ -356,9 +378,11 @@
   const buttons=[...document.querySelectorAll('.palette-switcher button')];
 
   function syncWaveColour(){
-    const colour=getComputedStyle(document.body).getPropertyValue('--wave-color').trim() || '#173bd8';
+    const styles=getComputedStyle(document.body);
+    const colour=styles.getPropertyValue('--wave-color').trim() || '#173bd8';
+    const heroColour=document.body.dataset.palette==='beyond-visible' ? '#ff415c' : colour;
     document.querySelectorAll('.lambda-wave--dark:not(.lambda-wave--hero) path').forEach(path => path.setAttribute('stroke',colour));
-    document.querySelectorAll('#lambda-hero-wave-gradient stop:nth-child(-n+2)').forEach(stop => stop.setAttribute('stop-color',colour));
+    document.querySelectorAll('#lambda-hero-wave-gradient stop:nth-child(-n+2)').forEach(stop => stop.setAttribute('stop-color',heroColour));
   }
 
   buttons.forEach(button => button.addEventListener('click', () => {
