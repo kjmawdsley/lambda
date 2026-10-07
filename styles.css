@@ -1427,3 +1427,15 @@ footer a:hover{
 .reel-frame{
   border-color:rgba(255,255,255,.28);
 }
+
+
+/* Ultraviolet refinement — soften the manifesto block */
+.manifesto{
+  background:#e8e1b7;
+  color:#17121d;
+}
+
+.manifesto > .lambda-wave .lambda-wave__track,
+.manifesto > .lambda-wave .lambda-wave__runner{
+  stroke:#4b19ff;
+}
