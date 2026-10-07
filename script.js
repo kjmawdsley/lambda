@@ -29,7 +29,7 @@ function createWave({ tone = 'dark', hero = false, delay = 0 } = {}) {
   svg.classList.add('lambda-wave', hero ? 'lambda-wave--hero' : 'lambda-wave--section', `lambda-wave--${tone}`);
   svg.style.setProperty('--wave-delay', `${delay}s`);
 
-  let stroke = tone === 'light' ? '#ffffff' : '#173bd8';
+  let stroke = tone === 'light' ? '#ffffff' : '#d8ff00';
 
   if (hero) {
     const defs = document.createElementNS(ns, 'defs');
@@ -38,7 +38,7 @@ function createWave({ tone = 'dark', hero = false, delay = 0 } = {}) {
     gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
     gradient.setAttribute('x1', '0');
     gradient.setAttribute('x2', '1600');
-    ['0:#173bd8','34.9:#173bd8','35.1:#ffffff','100:#ffffff'].forEach(item => {
+    ['0:#d8ff00','34.9:#d8ff00','35.1:#ffffff','100:#ffffff'].forEach(item => {
       const [offset, colour] = item.split(':');
       const stop = document.createElementNS(ns, 'stop');
       stop.setAttribute('offset', `${offset}%`);
