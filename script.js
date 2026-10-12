@@ -1,4 +1,4 @@
-const items = document.querySelectorAll('.project, .private-card, .manifesto-grid, .craft-intro, .capabilities, .method-title, .method-body');
+const items = document.querySelectorAll('.project, .private-card, .manifesto-grid, .services-head, .service-card, .craft-intro, .capabilities, .method-title, .method-body');
 items.forEach(el => el.classList.add('reveal'));
 
 const observer = new IntersectionObserver((entries) => {

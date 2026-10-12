@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Start a project with Lambda — visual development, storyboards, motion and agency production support.">
+  <title>Start a project — Lambda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=boska@300,301,400,401,500,501&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="start-page">
+  <header class="site-nav">
+    <a class="brand" href="index.html" aria-label="Lambda home"><span class="brand-word">Lambda</span></a>
+    <nav aria-label="Primary"><a href="index.html#work">Work</a><a href="index.html#services">Services</a><a href="index.html#approach">Approach</a></nav>
+  </header>
+  <main>
+    <section class="start-hero">
+      <div><div class="eyebrow">Start a project</div><h1>Brief it once.<br><em>Keep it moving.</em></h1></div>
+      <div class="start-intro"><p>Give Lambda enough context to judge the job properly: what you need, what it needs to do, your budget and the deadline.</p><p>Calls aren't required. If the brief is clear, the project can stay async from scope through feedback and delivery.</p></div>
+    </section>
+
+    <section class="intake-shell">
+      <aside class="intake-aside">
+        <div class="eyebrow">Typical starting points</div>
+        <div class="intake-price"><span>Visual development</span><strong>£3,500+</strong></div>
+        <div class="intake-price"><span>Storyboard + previs</span><strong>£2,750+</strong></div>
+        <div class="intake-price"><span>Motion / production</span><strong>£6,000+</strong></div>
+        <div class="intake-price"><span>Agency support</span><strong>£750/day+</strong></div>
+        <p class="intake-note">Minimum engagement £2,500. Larger campaigns and unusual briefs are quoted to scope.</p>
+      </aside>
+
+      <div class="intake-form-wrap">
+        <form class="intake-form" id="project-form">
+          <div class="form-grid form-grid--two">
+            <label><span>Name *</span><input name="name" autocomplete="name" required></label>
+            <label><span>Work email *</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <div class="form-grid form-grid--two">
+            <label><span>Company</span><input name="company" autocomplete="organization"></label>
+            <label><span>What do you need? *</span><select name="service" required><option value="">Choose one</option><option value="visual">Visual Development Sprint</option><option value="storyboard">Storyboard + Previs Sprint</option><option value="motion">Motion / Campaign Production</option><option value="agency">Agency / White-label Support</option><option value="custom">Something else</option></select></label>
+          </div>
+          <div class="form-grid form-grid--two">
+            <label><span>Budget *</span><select name="budget" required><option value="">Choose a range</option><option value="under-2">Under £2k</option><option value="2-5">£2k–£5k</option><option value="5-10">£5k–£10k</option><option value="10-25">£10k–£25k</option><option value="25-plus">£25k+</option></select></label>
+            <label><span>Timing *</span><select name="timing" required><option value="">Choose timing</option><option value="under-week">Within a week</option><option value="2-4-weeks">2–4 weeks</option><option value="1-2-months">1–2 months</option><option value="flexible">Flexible / exploring</option></select></label>
+          </div>
+          <label><span>What are you trying to make? *</span><textarea name="brief" rows="7" maxlength="4000" placeholder="The problem, audience, idea and what success looks like." required></textarea></label>
+          <label><span>What needs delivering?</span><textarea name="deliverables" rows="4" maxlength="2000" placeholder="For example: 4 campaign KVs, 16:9 / 9:16, 20 storyboard frames, 30s film…"></textarea></label>
+          <label><span>Brief / references link</span><input name="reference" type="url" placeholder="Dropbox, Drive, Frame.io, Figma, Notion…"></label>
+
+          <fieldset class="work-style">
+            <legend>How do you want to work?</legend>
+            <label><input type="radio" name="workStyle" value="async" checked><span><strong>Async by default</strong><small>Scope and run the job by email + structured feedback.</small></span></label>
+            <label><input type="radio" name="workStyle" value="call-if-useful"><span><strong>Call if useful</strong><small>Keep it async unless a short conversation would genuinely help.</small></span></label>
+          </fieldset>
+
+          <label class="honeypot" aria-hidden="true"><span>Website</span><input name="website" tabindex="-1" autocomplete="off"></label>
+          <div class="form-submit-row"><p>By submitting, you're sending enough information for Lambda to assess fit and scope. No mailing list.</p><button class="project-submit" type="submit">Send brief →</button></div>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand brand--footer" href="index.html"><span class="brand-word">Lambda</span></a><div>Creative craft, accelerated.</div><div>UK / Async by default</div></footer>
+
+  <script>
+    const form=document.getElementById('project-form');
+    const status=document.getElementById('form-status');
+    const requested=new URLSearchParams(location.search).get('service');
+    if(requested && form.elements.service.querySelector('option[value="'+requested+'"]')) form.elements.service.value=requested;
+    form.addEventListener('submit',async(event)=>{
+      event.preventDefault();
+      const button=form.querySelector('button[type="submit"]');
+      status.className='form-status'; status.textContent='Sending…'; button.disabled=true;
+      const data=Object.fromEntries(new FormData(form).entries()); data.source=location.href;
+      try{
+        const response=await fetch('/api/enquiry',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});
+        const result=await response.json().catch(()=>({}));
+        if(!response.ok) throw new Error(result.message || 'Could not send the brief.');
+        status.className='form-status is-success'; status.textContent=result.message || 'Brief sent. Lambda will review it and reply by email.'; form.reset();
+      }catch(error){status.className='form-status is-error';status.textContent=error.message}
+      finally{button.disabled=false}
+    });
+  </script>
+</body>
+</html>

@@ -127,6 +127,39 @@ function pageResponse(options, status = 200) {
   });
 }
 
+
+function cleanText(value, max = 4000) { return String(value || "").trim().slice(0, max); }
+function validEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
+function serviceLabel(value) { return ({visual:"Visual Development Sprint",storyboard:"Storyboard + Previs Sprint",motion:"Motion / Campaign Production",agency:"Agency / White-label Support",custom:"Custom / Other"})[value] || "Unspecified"; }
+function budgetLabel(value) { return ({"under-2":"Under £2k","2-5":"£2k–£5k","5-10":"£5k–£10k","10-25":"£10k–£25k","25-plus":"£25k+"})[value] || "Unspecified"; }
+function timingLabel(value) { return ({"under-week":"Within a week","2-4-weeks":"2–4 weeks","1-2-months":"1–2 months",flexible:"Flexible / exploring"})[value] || "Unspecified"; }
+function classifyLead(data) {
+  if (data.budget === "under-2") return "below-minimum";
+  if (data.timing === "under-week") return "rush";
+  if (data.service === "motion" && data.budget === "2-5") return "review";
+  if (["5-10","10-25","25-plus"].includes(data.budget)) return "strong-fit";
+  return "likely-fit";
+}
+async function sendResend(env, payload) {
+  const response = await fetch("https://api.resend.com/emails", {method:"POST",headers:{authorization:"Bearer "+env.RESEND_API_KEY,"content-type":"application/json"},body:JSON.stringify(payload)});
+  if (!response.ok) throw new Error("Email delivery failed.");
+}
+async function handleEnquiry(request, env) {
+  if (!env.RESEND_API_KEY || !env.LEADS_TO_EMAIL || !env.FROM_EMAIL) {
+    return Response.json({message:"The project form is ready, but email delivery has not been connected yet."},{status:503});
+  }
+  let data; try { data=await request.json(); } catch { return Response.json({message:"That submission could not be read."},{status:400}); }
+  if (cleanText(data.website,200)) return Response.json({message:"Brief sent."});
+  const lead={name:cleanText(data.name,120),email:cleanText(data.email,200).toLowerCase(),company:cleanText(data.company,180),service:cleanText(data.service,40),budget:cleanText(data.budget,40),timing:cleanText(data.timing,40),brief:cleanText(data.brief,4000),deliverables:cleanText(data.deliverables,2000),reference:cleanText(data.reference,800),workStyle:cleanText(data.workStyle,40),source:cleanText(data.source,800)};
+  if(!lead.name || !validEmail(lead.email) || !lead.service || !lead.budget || !lead.timing || lead.brief.length<20) return Response.json({message:"Please complete the required fields before sending."},{status:400});
+  const fit=classifyLead(lead);
+  const internal=["New Lambda enquiry","","FIT: "+fit.toUpperCase(),"Name: "+lead.name,"Company: "+(lead.company||"—"),"Email: "+lead.email,"Service: "+serviceLabel(lead.service),"Budget: "+budgetLabel(lead.budget),"Timing: "+timingLabel(lead.timing),"Working style: "+(lead.workStyle||"async"),"","BRIEF",lead.brief,"","DELIVERABLES",lead.deliverables||"—","","REFERENCE",lead.reference||"—","","SOURCE",lead.source||"—"].join("\n");
+  const client=fit==="below-minimum" ? "Thanks for sending the brief. Lambda's minimum engagement is £2,500, so this currently sits below the usual project threshold. If the scope or budget changes, you're welcome to submit it again." : fit==="rush" ? "Thanks for sending the brief. The turnaround is tighter than Lambda's usual production window, so availability needs checking before anything is booked. You'll get a reply by email." : "Thanks for sending the brief. It looks within Lambda's usual scope. It'll be reviewed and you'll get a reply by email. Calls aren't required unless they'd genuinely help the project.";
+  await sendResend(env,{from:env.FROM_EMAIL,to:[env.LEADS_TO_EMAIL],reply_to:lead.email,subject:"[Lambda / "+fit+"] "+serviceLabel(lead.service)+" — "+lead.name,text:internal});
+  await sendResend(env,{from:env.FROM_EMAIL,to:[lead.email],subject:"Lambda — brief received",text:"Hi "+lead.name+",\n\n"+client+"\n\nLambda\nCreative direction + production"});
+  return Response.json({message:fit==="below-minimum" ? "Brief received. This sits below Lambda's usual £2,500 minimum, so check your email for the next step." : "Brief sent. Check your email for confirmation."});
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -179,6 +212,11 @@ export default {
 
     if (currentToken !== expectedToken) {
       return pageResponse({ next: url.pathname + url.search });
+    }
+
+    if (url.pathname === "/api/enquiry") {
+      if (request.method !== "POST") return Response.json({ message: "Method not allowed." }, { status: 405 });
+      return handleEnquiry(request, env);
     }
 
     const assetResponse = await env.ASSETS.fetch(request);
