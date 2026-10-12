@@ -160,6 +160,30 @@ async function handleEnquiry(request, env) {
   return Response.json({message:fit==="below-minimum" ? "Brief received. This sits below Lambda's usual £2,500 minimum, so check your email for the next step." : "Brief sent. Check your email for confirmation."});
 }
 
+async function sendResendEmail(env, payload) {
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "authorization": "Bearer " + env.RESEND_API_KEY,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) throw new Error("Resend error: " + response.status + " " + await response.text());
+}
+
+function escapeHtml(value) {
+  return String(value || "").replace(/[&<>"\']/g, function(char) {
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#039;"}[char];
+  });
+}
+
+function enquiryThanks(name) {
+  const safeName = name ? ", " + escapeHtml(name) : "";
+  const html = "<!doctype html><html lang=\"en-GB\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta name=\"robots\" content=\"noindex,nofollow\"><title>Brief received — Lambda</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;padding:30px;background:#210b35;color:#fbf7ff;font-family:Arial,sans-serif}main{max-width:760px}p{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#ff7255}h1{margin:26px 0;font:400 clamp(58px,9vw,118px)/.86 Georgia,serif;letter-spacing:-.04em}h1 em{font-weight:400}a{color:#fbf7ff;text-decoration:none;border-bottom:1px solid #ff415c;padding-bottom:3px}</style></head><body><main><p>Lambda / Brief received</p><h1>Got it" + safeName + ".<br><em>I’ll take a look.</em></h1><p style=\"text-transform:none;letter-spacing:0;color:#fbf7ff;font-size:18px;line-height:1.4\">I’ll come back with fit, scope and the clearest next step. No call unless it’s genuinely useful.</p><a href=\"/\">Back to Lambda ↗</a></main></body></html>";
+  return new Response(html, {headers:{"content-type":"text/html; charset=UTF-8","cache-control":"no-store","x-robots-tag":"noindex, nofollow"}});
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -210,6 +234,64 @@ export default {
       });
     }
 
+    if (url.pathname === "/__enquiry" && request.method === "POST") {
+      if (currentToken !== expectedToken) return pageResponse({ next: "/start-project.html" });
+
+      const form = await request.formData();
+      if (String(form.get("website") || "")) return enquiryThanks("");
+
+      const data = {
+        name:String(form.get("name") || "").trim(),
+        email:String(form.get("email") || "").trim(),
+        company:String(form.get("company") || "").trim(),
+        projectType:String(form.get("project_type") || "").trim(),
+        budget:String(form.get("budget") || "").trim(),
+        deadline:String(form.get("deadline") || "").trim(),
+        brief:String(form.get("brief") || "").trim(),
+        deliverables:String(form.get("deliverables") || "").trim(),
+        references:String(form.get("references") || "").trim(),
+        callPreference:String(form.get("call_preference") || "").trim()
+      };
+
+      if (!data.name || !data.email || !data.projectType || !data.budget || !data.brief) {
+        return new Response("Please complete the required fields.", {status:400});
+      }
+
+      if (!env.RESEND_API_KEY || !env.LAMBDA_INBOX || !env.LAMBDA_FROM_EMAIL) {
+        return new Response("Project enquiries are not configured yet.", {
+          status:503,
+          headers:{"content-type":"text/plain; charset=UTF-8","cache-control":"no-store"}
+        });
+      }
+
+      const subject = "Lambda enquiry — " + data.projectType + " — " + data.budget;
+      const fields = [
+        ["Name",data.name],["Email",data.email],["Company",data.company || "—"],
+        ["Project",data.projectType],["Budget",data.budget],["Deadline",data.deadline || "—"],
+        ["Calls",data.callPreference || "—"],["References",data.references || "—"],
+        ["Deliverables",data.deliverables || "—"],["Brief",data.brief]
+      ];
+      const rows = fields.map(function(pair) {
+        return "<tr><td style=\"padding:8px 14px 8px 0;vertical-align:top;color:#716976\">" + escapeHtml(pair[0]) + "</td><td style=\"padding:8px 0;white-space:pre-wrap\">" + escapeHtml(pair[1]) + "</td></tr>";
+      }).join("");
+
+      await sendResendEmail(env, {
+        from: env.LAMBDA_FROM_EMAIL,
+        to: [env.LAMBDA_INBOX],
+        reply_to: data.email,
+        subject: subject,
+        html: "<div style=\"font-family:Arial,sans-serif;color:#170f1c\"><h1 style=\"font:400 36px Georgia,serif\">New Lambda brief</h1><table style=\"border-collapse:collapse\">" + rows + "</table></div>"
+      });
+
+      await sendResendEmail(env, {
+        from: env.LAMBDA_FROM_EMAIL,
+        to: [data.email],
+        subject: "Lambda — brief received",
+        html: "<div style=\"font-family:Arial,sans-serif;color:#170f1c\"><p style=\"text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#ff415c\">Lambda / Brief received</p><h1 style=\"font:400 44px Georgia,serif;margin:24px 0\">Got it, " + escapeHtml(data.name) + ".</h1><p style=\"font-size:17px;line-height:1.5\">I’ll review what you’ve sent and come back with fit, scope and the clearest next step. Lambda works async by default, so there’s no call unless it genuinely helps the work.</p><p style=\"font-size:13px;color:#716976\">Project: " + escapeHtml(data.projectType) + " · Budget: " + escapeHtml(data.budget) + "</p></div>"
+      });
+
+      return enquiryThanks(data.name);
+    }
     if (currentToken !== expectedToken) {
       return pageResponse({ next: url.pathname + url.search });
     }
