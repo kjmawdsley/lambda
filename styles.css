@@ -1723,3 +1723,12 @@ body{padding-top:var(--nav-height)}
   .site-nav .nav-cta{padding:8px 10px}
   .hero-actions{align-items:flex-start;flex-direction:column;gap:14px}
 }
+
+
+/* 2026-10-12 — clearer remote positioning + hero wave spacing */
+.lambda-wave--hero{
+  bottom:112px;
+}
+@media(max-width:900px){
+  .lambda-wave--hero{display:none}
+}

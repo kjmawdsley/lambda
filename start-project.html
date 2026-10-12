@@ -20,7 +20,7 @@
   <main>
     <section class="start-hero">
       <div><div class="eyebrow">Start a project</div><h1>Brief it once.<br><em>Keep it moving.</em></h1></div>
-      <div class="start-intro"><p>Give Lambda enough context to judge the job properly: what you need, what it needs to do, your budget and the deadline.</p><p>Calls aren't required. If the brief is clear, the project can stay async from scope through feedback and delivery.</p></div>
+      <div class="start-intro"><p>Give Lambda enough context to judge the job properly: what you need, what it needs to do, your budget and the deadline.</p><p>Calls aren't required. If the brief is clear, scope, feedback and delivery can all happen online.</p></div>
     </section>
 
     <section class="intake-shell">
@@ -43,6 +43,7 @@
             <label><span>Company</span><input name="company" autocomplete="organization"></label>
             <label><span>What do you need? *</span><select name="service" required><option value="">Choose one</option><option value="visual">Visual Development Sprint</option><option value="storyboard">Storyboard + Previs Sprint</option><option value="motion">Motion / Campaign Production</option><option value="agency">Agency / White-label Support</option><option value="custom">Something else</option></select></label>
           </div>
+          <label><span>Country / timezone *</span><input name="location" autocomplete="country-name" placeholder="e.g. New York / ET, Berlin / CET, Singapore / SGT" required></label>
           <div class="form-grid form-grid--two">
             <label><span>Budget *</span><select name="budget" required><option value="">Choose a range</option><option value="under-2">Under £2,500</option><option value="2-5">£2,500–£5k</option><option value="5-10">£5k–£10k</option><option value="10-25">£10k–£25k</option><option value="25-plus">£25k+</option></select></label>
             <label><span>Timing *</span><select name="timing" required><option value="">Choose timing</option><option value="under-week">Within a week</option><option value="2-4-weeks">2–4 weeks</option><option value="1-2-months">1–2 months</option><option value="flexible">Flexible / exploring</option></select></label>
@@ -53,8 +54,8 @@
 
           <fieldset class="work-style">
             <legend>How do you want to work?</legend>
-            <label><input type="radio" name="workStyle" value="async" checked><span><strong>Async by default</strong><small>Scope and run the job by email + structured feedback.</small></span></label>
-            <label><input type="radio" name="workStyle" value="call-if-useful"><span><strong>Call if useful</strong><small>Keep it async unless a short conversation would genuinely help.</small></span></label>
+            <label><input type="radio" name="workStyle" value="remote" checked><span><strong>No call required</strong><small>Scope, feedback and delivery by email + structured review.</small></span></label>
+            <label><input type="radio" name="workStyle" value="call-if-useful"><span><strong>Call if useful</strong><small>Add a short call only if it genuinely helps the work.</small></span></label>
           </fieldset>
 
           <label class="honeypot" aria-hidden="true"><span>Website</span><input name="website" tabindex="-1" autocomplete="off"></label>
@@ -64,7 +65,7 @@
       </div>
     </section>
   </main>
-  <footer><a class="brand brand--footer" href="index.html"><span class="brand-word">Lambda</span></a><div>Creative craft, accelerated.</div><div>UK / Async by default</div></footer>
+  <footer><a class="brand brand--footer" href="index.html"><span class="brand-word">Lambda</span></a><div>Creative craft, accelerated.</div><div>UK-based / Working internationally</div></footer>
 
   <script>
     const form=document.getElementById('project-form');
