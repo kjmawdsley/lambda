@@ -1600,3 +1600,126 @@ footer a:hover{
 .project-submit:hover,.project-submit:focus-visible{background:#ff415c;border-color:#ff415c;color:#170f1c;transform:translateY(-2px)}.project-submit:disabled{opacity:.45;cursor:wait;transform:none}
 .form-status{min-height:24px;font-size:14px}.form-status.is-success{color:#5a2dff}.form-status.is-error{color:#c82342}
 @media(max-width:850px){.services-head,.start-hero,.intake-shell{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr}.service-card{min-height:430px}.service-terms{grid-template-columns:1fr}.service-terms span{border-right:0;border-bottom:1px solid var(--line)}.services-head>p{margin-top:24px}.start-hero{padding-top:72px}.start-intro{margin-top:24px}.intake-aside{position:static}.form-grid--two{grid-template-columns:1fr}.form-submit-row{align-items:flex-start;flex-direction:column}}
+
+
+/* 2026-10-12 — persistent navigation + stronger project CTAs */
+:root{--nav-height:62px}
+body{padding-top:var(--nav-height)}
+.site-nav{
+  position:fixed !important;
+  top:0;left:0;right:0;
+  z-index:1000;
+  min-height:var(--nav-height);
+}
+.site-nav nav{align-items:center}
+.site-nav .nav-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  background:#ff415c;
+  border:1px solid #ff415c;
+  color:#170f1c !important;
+  font-weight:700;
+  white-space:nowrap;
+  transition:background-color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.site-nav .nav-cta:after{display:none !important}
+.site-nav .nav-cta:hover,
+.site-nav .nav-cta:focus-visible{
+  background:#ff7255;
+  border-color:#ff7255;
+  color:#170f1c !important;
+  transform:translateY(-1px);
+}
+.site-nav .nav-cta--current{background:#5a2dff;border-color:#5a2dff;color:#fbf7ff !important}
+
+.primary-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  padding:13px 16px;
+  background:#ff415c;
+  border:1px solid #ff415c;
+  color:#170f1c !important;
+  font-size:12px;
+  font-weight:700;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  transition:background-color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.primary-cta:hover,
+.primary-cta:focus-visible{
+  background:#ff7255;
+  border-color:#ff7255;
+  color:#170f1c !important;
+  transform:translateY(-2px);
+}
+
+.hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero--image .hero-actions .primary-cta{color:#170f1c !important}
+
+.service-card-foot a{
+  display:inline-flex;
+  align-items:center;
+  padding:9px 11px;
+  border:1px solid currentColor;
+  white-space:nowrap;
+  transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.service-card-foot a:hover{transform:translateY(-2px)}
+
+.mid-cta{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:7vw;
+  align-items:end;
+  padding:7vw 3vw;
+  background:#e5d6ef;
+  color:#170f1c;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.mid-cta h2{
+  margin:28px 0 0;
+  font-family:var(--serif);
+  font-size:clamp(54px,6.8vw,108px);
+  font-weight:400;
+  line-height:.9;
+  letter-spacing:-.018em;
+}
+.mid-cta h2 em{font-weight:400}
+.mid-cta-action{max-width:620px}
+.mid-cta-action p{margin:0 0 28px;font-size:clamp(18px,1.55vw,23px);line-height:1.3}
+
+.contact .contact-link{
+  display:inline-flex;
+  width:max-content;
+  padding:14px 18px;
+  border:1px solid #ff415c;
+  background:#ff415c;
+  color:#170f1c;
+  transition:background-color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.contact .contact-link:hover,
+.contact .contact-link:focus-visible{
+  background:#ff7255;
+  border-color:#ff7255;
+  color:#170f1c;
+  transform:translateY(-2px);
+}
+
+@media(max-width:850px){
+  .mid-cta{grid-template-columns:1fr;gap:36px;padding:72px 20px}
+}
+@media(max-width:650px){
+  :root{--nav-height:56px}
+  .site-nav{padding:10px 14px;min-height:var(--nav-height)}
+  .site-nav nav{gap:8px}
+  .site-nav .nav-optional{display:none}
+  .site-nav nav a{font-size:10px}
+  .site-nav .nav-cta{padding:8px 10px}
+  .hero-actions{align-items:flex-start;flex-direction:column;gap:14px}
+}

@@ -1,6 +1,6 @@
 
 .project-page{background:var(--paper);color:var(--ink)}
-.project-page .site-nav{position:sticky}
+.project-page .site-nav{position:fixed;top:0;left:0;right:0}
 .project-back{font-size:12px;text-transform:uppercase;letter-spacing:.1em}
 .case-hero{padding:7vw 3vw 5vw;display:grid;grid-template-columns:.72fr 1.28fr;gap:7vw;align-items:end}
 .case-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:28px}
@@ -383,4 +383,35 @@
   height:auto !important;
   min-height:0 !important;
   object-fit:contain !important;
+}
+
+
+/* Persistent case-study CTA */
+.case-cta{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:5vw;
+  padding:6vw 3vw;
+  background:#210b35;
+  color:#fbf7ff;
+}
+.case-cta span{
+  display:block;
+  margin-bottom:18px;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:#ff7255;
+}
+.case-cta h2{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(52px,6.6vw,104px);
+  line-height:.9;
+  font-weight:400;
+  letter-spacing:-.018em;
+}
+@media(max-width:800px){
+  .case-cta{align-items:flex-start;flex-direction:column;padding:72px 18px;gap:32px}
 }
